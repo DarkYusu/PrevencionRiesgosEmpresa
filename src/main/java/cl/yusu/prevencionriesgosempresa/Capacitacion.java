@@ -15,15 +15,15 @@ public class Capacitacion {
     private String dia;
     private String hora;
     private String lugar;
-    private String duracion;
+    private int duracion;
     private int cantidadAsistentes;
 
     public Capacitacion() {
     }
 
-    public Capacitacion(int identificador, int rutCliente, String dia, 
+    public Capacitacion(int identificador, int rutCliente, String dia,
             String hora, String lugar,
-                         String duracion, int cantidadAsistentes) {
+            int duracion, int cantidadAsistentes) {
         setIdentificador(identificador);
         setRutCliente(rutCliente);
         setDia(dia);
@@ -87,7 +87,7 @@ public class Capacitacion {
     }
 
     public void setLugar(String lugar) {
-        if (lugar == null || lugar.trim().length() < 10 || 
+        if (lugar == null || lugar.trim().length() < 10 ||
                 lugar.trim().length() > 50) {
             throw new IllegalArgumentException("El lugar es obligatorio y "
                     + "debe tener entre 10 y 50 caracteres.");
@@ -95,14 +95,14 @@ public class Capacitacion {
         this.lugar = lugar;
     }
 
-    public String getDuracion() {
+    public int getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(String duracion) {
-        if (duracion != null && duracion.trim().length() > 70) {
-            throw new IllegalArgumentException("La duración no puede exceder "
-                    + "los 70 caracteres.");
+    public void setDuracion(int duracion) {
+        if (duracion <= 0 || duracion > 70) {
+            throw new IllegalArgumentException(
+                    "La duración de la capacitación debe ser un número entre 1 y 70 minutos.");
         }
         this.duracion = duracion;
     }
@@ -123,18 +123,18 @@ public class Capacitacion {
     @Override
     public String toString() {
         return "Capacitacion{" +
-               "identificador=" + identificador +
-               ", rutCliente=" + rutCliente +
-               ", dia='" + dia + '\'' +
-               ", hora='" + hora + '\'' +
-               ", lugar='" + lugar + '\'' +
-               ", duracion='" + duracion + '\'' +
-               ", cantidadAsistentes=" + cantidadAsistentes +
-               '}';
+                "identificador=" + identificador +
+                ", rutCliente=" + rutCliente +
+                ", dia='" + dia + '\'' +
+                ", hora='" + hora + '\'' +
+                ", lugar='" + lugar + '\'' +
+                ", duracion='" + duracion + '\'' +
+                ", cantidadAsistentes=" + cantidadAsistentes +
+                '}';
     }
 
     public String mostrarDetalle() {
         return "La capacitacion sera en " + this.lugar + " a las " + this.hora +
-               " del dia " + this.dia + ", y durara " + this.duracion;
+                " del dia " + this.dia + ", y durara " + this.duracion;
     }
 }

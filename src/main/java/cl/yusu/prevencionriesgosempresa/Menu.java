@@ -264,7 +264,7 @@ public class Menu {
             System.out.print("Lugar (10-50 caracteres): ");
             String lugar = scanner.nextLine();
             System.out.print("Duracion (max 70 caracteres): ");
-            String duracion = scanner.nextLine();
+            int duracion = scanner.nextInt();
             System.out.print("Cantidad de asistentes (1-999): ");
             int asistentes = scanner.nextInt();
             scanner.nextLine();
