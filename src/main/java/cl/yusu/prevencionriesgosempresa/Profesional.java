@@ -48,7 +48,7 @@ public class Profesional extends Usuario {
         }
         this.fechaIngreso = fechaIngreso;
     }
-
+ 
     @Override
     public String toString() {
         return "Profesional{"

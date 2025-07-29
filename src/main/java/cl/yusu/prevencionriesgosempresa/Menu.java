@@ -135,7 +135,7 @@ public class Menu {
             contenedor.almacenarCliente(cliente);
 
         } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegúrese de "
+            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
                     + "ingresar numeros para RUN, RUT, sistema de salud y "
                     + "edad.");
             scanner.nextLine(); // Consumir el resto de la línea
