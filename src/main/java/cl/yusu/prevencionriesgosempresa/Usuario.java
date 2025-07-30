@@ -10,7 +10,7 @@ package cl.yusu.prevencionriesgosempresa;
  */
 public class Usuario implements Asesoria {
 
-  protected String nombre;
+    protected String nombre;
     protected String fechaNacimiento;
     protected int run;
 
@@ -28,8 +28,8 @@ public class Usuario implements Asesoria {
     }
 
     public void setNombre(String nombre) {
-        if (nombre == null || nombre.trim().length() < 10 || 
-                nombre.trim().length() > 50) {
+        if (nombre == null || nombre.trim().length() < 10
+                || nombre.trim().length() > 50) {
             throw new IllegalArgumentException("El nombre es obligatorio y debe tener entre 10 y 50 caracteres.");
         }
         this.nombre = nombre;
@@ -61,11 +61,11 @@ public class Usuario implements Asesoria {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-               "nombre='" + nombre + '\'' +
-               ", fechaNacimiento='" + fechaNacimiento + '\'' +
-               ", run=" + run +
-               '}';
+        return "Usuario{"
+                + "nombre='" + nombre + '\''
+                + ", fechaNacimiento='" + fechaNacimiento + '\''
+                + ", run=" + run
+                + '}';
     }
 
     public String mostrarEdad() {

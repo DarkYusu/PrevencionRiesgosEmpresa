@@ -23,14 +23,14 @@ public class CapacitacionTest {
         assertEquals("Lunes", capacitacion.getDia());
         assertEquals("10:00", capacitacion.getHora());
         assertEquals("Sala A de diez caracteres", capacitacion.getLugar());
-        assertEquals("2 horas", capacitacion.getDuracion());
+        assertEquals(60, capacitacion.getDuracion());
         assertEquals(15, capacitacion.getCantidadAsistentes());
     }
 
     @Test
     void testSetDiaValido() {
         Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00", 
-                "Lugar Test Capacitacion", 60, 10);
+                "Lugar Test Capacitacion", 10, 10);
         capacitacion.setDia("miercoles");
         assertEquals("miercoles", capacitacion.getDia());
     }
@@ -38,9 +38,9 @@ public class CapacitacionTest {
     @Test
     void testSetDiaInvalido() {
         Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00", 
-                "Lugar Test Capacitacion", 60, 10);
+                "Lugar Test Capacitacion", 10, 10);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            capacitacion.setDia("DiaDePrueba"); // No es un día de la semana válido
+            capacitacion.setDia("DiaDePrueba");
         });
         assertTrue(exception.getMessage().contains("El día debe ser un valor "
                 + "valido entre 'lunes' y 'domingo'."));
@@ -49,7 +49,7 @@ public class CapacitacionTest {
     @Test
     void testSetIdentificadorInvalido() {
         Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00", 
-                "Lugar Test Capacitacion", 60, 10);
+                "Lugar Test Capacitacion", 10, 10);
         Exception exception = assertThrows(IllegalArgumentException.class, () 
                 -> {
             capacitacion.setIdentificador(0); // Debe ser mayor a 0

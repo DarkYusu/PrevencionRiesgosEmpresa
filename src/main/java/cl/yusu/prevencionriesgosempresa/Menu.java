@@ -138,9 +138,9 @@ public class Menu {
             System.out.println("Error: tipo de dato incorrecto. Asegurese de "
                     + "ingresar numeros para RUN, RUT, sistema de salud y "
                     + "edad.");
-            scanner.nextLine(); // Consumir el resto de la línea
+            scanner.nextLine();
         } catch (IllegalArgumentException e) {
-            System.out.println("Error de validación: " + e.getMessage());
+            System.out.println("Error de validacion: " + e.getMessage());
         }
     }
 
@@ -165,11 +165,11 @@ public class Menu {
             contenedor.almacenarProfesional(profesional);
 
         } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegúrese de "
-                    + "ingresar números para RUN.");
+            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
+                    + "ingresar numeros para RUN.");
             scanner.nextLine();
         } catch (IllegalArgumentException e) {
-            System.out.println("Error de validación: " + e.getMessage());
+            System.out.println("Error de validacion: " + e.getMessage());
         }
     }
 
@@ -194,11 +194,11 @@ public class Menu {
             contenedor.almacenarAdministrativo(administrativo);
 
         } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegúrese de "
-                    + "ingresar números para RUN.");
+            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
+                    + "ingresar numeros para RUN.");
             scanner.nextLine();
         } catch (IllegalArgumentException e) {
-            System.out.println("Error de validación: " + e.getMessage());
+            System.out.println("Error de validacion: " + e.getMessage());
         }
     }
 
@@ -278,7 +278,7 @@ public class Menu {
                     + "ingresar números para identificador, RUT y asistentes.");
             scanner.nextLine();
         } catch (IllegalArgumentException e) {
-            System.out.println("Error de validación: " + e.getMessage());
+            System.out.println("Error de validacion: " + e.getMessage());
         }
     }
 

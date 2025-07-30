@@ -87,8 +87,8 @@ public class Capacitacion {
     }
 
     public void setLugar(String lugar) {
-        if (lugar == null || lugar.trim().length() < 10 ||
-                lugar.trim().length() > 50) {
+        if (lugar == null || lugar.trim().length() < 10
+                || lugar.trim().length() > 50) {
             throw new IllegalArgumentException("El lugar es obligatorio y "
                     + "debe tener entre 10 y 50 caracteres.");
         }
@@ -101,8 +101,8 @@ public class Capacitacion {
 
     public void setDuracion(int duracion) {
         if (duracion <= 0 || duracion > 70) {
-            throw new IllegalArgumentException(
-                    "La duración de la capacitación debe ser un número entre 1 y 70 minutos.");
+            throw new IllegalArgumentException("La duración de la capacitación "
+                    + "debe ser un número entre 1 y 70 minutos.");
         }
         this.duracion = duracion;
     }
@@ -122,19 +122,19 @@ public class Capacitacion {
 
     @Override
     public String toString() {
-        return "Capacitacion{" +
-                "identificador=" + identificador +
-                ", rutCliente=" + rutCliente +
-                ", dia='" + dia + '\'' +
-                ", hora='" + hora + '\'' +
-                ", lugar='" + lugar + '\'' +
-                ", duracion='" + duracion + '\'' +
-                ", cantidadAsistentes=" + cantidadAsistentes +
-                '}';
+        return "Capacitacion{"
+                + "identificador=" + identificador
+                + ", rutCliente=" + rutCliente
+                + ", dia='" + dia + '\''
+                + ", hora='" + hora + '\''
+                + ", lugar='" + lugar + '\''
+                + ", duracion='" + duracion + '\''
+                + ", cantidadAsistentes=" + cantidadAsistentes
+                + '}';
     }
 
     public String mostrarDetalle() {
-        return "La capacitacion sera en " + this.lugar + " a las " + this.hora +
-                " del dia " + this.dia + ", y durara " + this.duracion;
+        return "La capacitacion sera en " + this.lugar + " a las " + this.hora
+                + " del dia " + this.dia + ", y durara " + this.duracion;
     }
 }

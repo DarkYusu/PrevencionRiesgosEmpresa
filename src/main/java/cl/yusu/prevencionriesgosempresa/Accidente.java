@@ -63,7 +63,8 @@ public class Accidente {
 
     public void setDia(String dia) {
         if (!ValidadorFechaHora.isValidarFecha(dia)) {
-            throw new IllegalArgumentException("El día del accidente es obligatorio y debe tener el formato DD/MM/AAAA.");
+            throw new IllegalArgumentException("El dia del accidente es "
+                    + "obligatorio y debe tener el formato DD/MM/AAAA.");
         }
         this.dia = dia;
     }

@@ -29,8 +29,8 @@ public class Profesional extends Usuario {
     }
 
     public void setTitulo(String titulo) {
-        if (titulo == null || titulo.trim().length() < 10 || 
-                titulo.trim().length() > 50) {
+        if (titulo == null || titulo.trim().length() < 10
+                || titulo.trim().length() > 50) {
             throw new IllegalArgumentException("El titulo es obligatorio "
                     + "y debe tener entre 10 y 50 caracteres.");
         }
@@ -48,7 +48,17 @@ public class Profesional extends Usuario {
         }
         this.fechaIngreso = fechaIngreso;
     }
- 
+
+    @Override
+    public void setRun(int run) {
+        System.out.println("Ingrese su rut sin el guion, ni el ultimo numero ");
+        if (run >= 0 && run < 99999999) {
+            this.run = run;
+        } else {
+            throw new IllegalArgumentException("Run debe ser menor que 99999999");
+        }
+    }
+
     @Override
     public String toString() {
         return "Profesional{"

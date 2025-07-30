@@ -327,9 +327,9 @@ public class Contenedor {
 
         // Capacitaciones
         Capacitacion cap1 = new Capacitacion(1, 98765432, "Lunes", "09:00", 
-                "Sala Capacitacion 1", "3 horas", 15);
+                "Sala Capacitacion 1", 70, 15);
         Capacitacion cap2 = new Capacitacion(2, 87654321, "Miercoles", "15:00", 
-                "Auditorio Central", "1 hora y media", 40);
+                "Auditorio Central", 70, 40);
         contenedor.almacenarCapacitacion(cap1);
         contenedor.almacenarCapacitacion(cap2);
 
