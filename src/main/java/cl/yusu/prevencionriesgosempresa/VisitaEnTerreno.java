@@ -10,7 +10,7 @@ package cl.yusu.prevencionriesgosempresa;
  */
 public class VisitaEnTerreno {
 
-  private int identificadorVisitaTerreno;
+    private int identificadorVisitaTerreno;
     private int rutCliente;
     private String dia;
     private String hora;
@@ -20,9 +20,9 @@ public class VisitaEnTerreno {
     public VisitaEnTerreno() {
     }
 
-    public VisitaEnTerreno(int identificadorVisitaTerreno, int rutCliente, 
+    public VisitaEnTerreno(int identificadorVisitaTerreno, int rutCliente,
             String dia, String hora,
-                           String lugar, String comentarios) {
+            String lugar, String comentarios) {
         setIdentificadorVisitaTerreno(identificadorVisitaTerreno);
         setRutCliente(rutCliente);
         setDia(dia);
@@ -61,7 +61,7 @@ public class VisitaEnTerreno {
     }
 
     public void setDia(String dia) {
-        if (!ValidadorFechaHora.isValidarFecha(dia)) { 
+        if (!ValidadorFechaHora.isValidarFecha(dia)) {
             throw new IllegalArgumentException("El dia de la visita en terreno "
                     + "es obligatorio y debe tener el formato DD/MM/AAAA.");
         }
@@ -85,7 +85,7 @@ public class VisitaEnTerreno {
     }
 
     public void setLugar(String lugar) {
-        if (lugar == null || lugar.trim().length() < 10 || 
+        if (lugar == null || lugar.trim().length() < 10 ||
                 lugar.trim().length() > 50) {
             throw new IllegalArgumentException("El lugar de la visita en "
                     + "terreno es obligatorio y debe tener entre 10 y 50"
@@ -109,12 +109,12 @@ public class VisitaEnTerreno {
     @Override
     public String toString() {
         return "VisitaEnTerreno{" +
-               "identificadorVisitaTerreno=" + identificadorVisitaTerreno +
-               ", rutCliente=" + rutCliente +
-               ", dia='" + dia + '\'' +
-               ", hora='" + hora + '\'' +
-               ", lugar='" + lugar + '\'' +
-               ", comentarios='" + comentarios + '\'' +
-               '}';
+                "identificadorVisitaTerreno=" + identificadorVisitaTerreno +
+                ", rutCliente=" + rutCliente +
+                ", dia='" + dia + '\'' +
+                ", hora='" + hora + '\'' +
+                ", lugar='" + lugar + '\'' +
+                ", comentarios='" + comentarios + '\'' +
+                '}';
     }
 }

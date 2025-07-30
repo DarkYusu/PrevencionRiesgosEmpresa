@@ -16,9 +16,8 @@ import java.util.List;
 public class ValidadorFechaHora {
 
     private static final List<String> DIAS_SEMANA_VALIDOS = Arrays.asList(
-            "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", 
-            "domingo"
-    );
+            "lunes", "martes", "miercoles", "jueves", "viernes", "sabado",
+            "domingo");
 
     public static boolean isValidarFecha(String fecha) {
         if (fecha == null || fecha.trim().isEmpty()) {

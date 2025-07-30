@@ -39,8 +39,8 @@ public class AdministrativoTest {
                 Exception exception = assertThrows(IllegalArgumentException.class, () -> {
                         admin.setArea("RH"); // Menos de 5 caracteres
                 });
-                assertTrue(exception.getMessage().contains("El area debe tener entre 5 "
-                                + "y 50 caracteres."));
+                assertTrue(exception.getMessage().contains("El area es obligatoria y debe "
+                                + "tener entre 5 y 20 caracteres."));
         }
 
         @Test

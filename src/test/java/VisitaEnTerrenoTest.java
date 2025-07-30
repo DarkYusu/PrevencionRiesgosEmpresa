@@ -15,7 +15,7 @@ public class VisitaEnTerrenoTest {
     
     @Test
     void testConstructorAndGetters() {
-        VisitaEnTerreno visita = new VisitaEnTerreno(1, 12345678, "Lunes", "10:30", "Oficina Central", "Revisión de seguridad.");
+        VisitaEnTerreno visita = new VisitaEnTerreno(1, 12345678, "01/01/2023", "10:30", "Oficina Central", "Revisión de seguridad.");
         
         assertEquals(1, visita.getIdentificadorVisitaTerreno());
         assertEquals(12345678, visita.getRutCliente());

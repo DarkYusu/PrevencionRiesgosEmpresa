@@ -10,7 +10,7 @@ package cl.yusu.prevencionriesgosempresa;
  */
 public class Accidente {
 
-   private int identificadorAccidente;
+    private int identificadorAccidente;
     private int rutCliente;
     private String dia;
     private String hora;
@@ -21,9 +21,9 @@ public class Accidente {
     public Accidente() {
     }
 
-    public Accidente(int identificadorAccidente, int rutCliente, 
+    public Accidente(int identificadorAccidente, int rutCliente,
             String dia, String hora, String lugar,
-                     String origen, String consecuencias) {
+            String origen, String consecuencias) {
         setIdentificadorAccidente(identificadorAccidente);
         setRutCliente(rutCliente);
         setDia(dia);
@@ -86,7 +86,7 @@ public class Accidente {
     }
 
     public void setLugar(String lugar) {
-        if (lugar == null || lugar.trim().length() < 10 
+        if (lugar == null || lugar.trim().length() < 10
                 || lugar.trim().length() > 50) {
             throw new IllegalArgumentException("El lugar del accidente es "
                     + "obligatorio y debe tener entre 10 y 50 caracteres.");
@@ -121,13 +121,13 @@ public class Accidente {
     @Override
     public String toString() {
         return "Accidente{" +
-               "identificadorAccidente=" + identificadorAccidente +
-               ", rutCliente=" + rutCliente +
-               ", dia='" + dia + '\'' +
-               ", hora='" + hora + '\'' +
-               ", lugar='" + lugar + '\'' +
-               ", origen='" + origen + '\'' +
-               ", consecuencias='" + consecuencias + '\'' +
-               '}';
+                "identificadorAccidente=" + identificadorAccidente +
+                ", rutCliente=" + rutCliente +
+                ", dia='" + dia + '\'' +
+                ", hora='" + hora + '\'' +
+                ", lugar='" + lugar + '\'' +
+                ", origen='" + origen + '\'' +
+                ", consecuencias='" + consecuencias + '\'' +
+                '}';
     }
 }

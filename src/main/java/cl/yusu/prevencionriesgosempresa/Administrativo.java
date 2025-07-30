@@ -17,7 +17,7 @@ public class Administrativo extends Usuario {
         super();
     }
 
-    public Administrativo(String nombre, String fechaNacimiento, int run, 
+    public Administrativo(String nombre, String fechaNacimiento, int run,
             String area, String experienciaPrevia) {
         super(nombre, fechaNacimiento, run);
         setArea(area);
@@ -29,7 +29,7 @@ public class Administrativo extends Usuario {
     }
 
     public void setArea(String area) {
-        if (area == null || area.trim().length() < 5 || 
+        if (area == null || area.trim().length() < 5 ||
                 area.trim().length() > 20) {
             throw new IllegalArgumentException("El area es obligatoria y debe "
                     + "tener entre 5 y 20 caracteres.");
@@ -42,7 +42,7 @@ public class Administrativo extends Usuario {
     }
 
     public void setExperienciaPrevia(String experienciaPrevia) {
-        if (experienciaPrevia != null 
+        if (experienciaPrevia != null
                 && experienciaPrevia.trim().length() > 100) {
             throw new IllegalArgumentException("La experiencia previa no puede "
                     + "exceder los 100 caracteres.");

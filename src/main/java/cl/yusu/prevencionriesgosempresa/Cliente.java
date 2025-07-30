@@ -24,9 +24,9 @@ public class Cliente extends Usuario {
         super();
     }
 
-    public Cliente(String nombre, String fechaNacimiento, int run, int rut, 
+    public Cliente(String nombre, String fechaNacimiento, int run, int rut,
             String nombres, String apellidos,
-            String telefono, String afp, int sistemaSalud, String direccion, 
+            String telefono, String afp, int sistemaSalud, String direccion,
             String comuna, int edad) {
         super(nombre, fechaNacimiento, run);
         setRut(rut);
@@ -57,7 +57,7 @@ public class Cliente extends Usuario {
     }
 
     public void setNombres(String nombres) {
-        if (nombres == null || nombres.trim().length() < 5 
+        if (nombres == null || nombres.trim().length() < 5
                 || nombres.trim().length() > 30) {
             throw new IllegalArgumentException("Los nombres son obligatorios y"
                     + " deben tener entre 5 y 30 caracteres.");
@@ -70,7 +70,7 @@ public class Cliente extends Usuario {
     }
 
     public void setApellidos(String apellidos) {
-        if (apellidos == null || apellidos.trim().length() < 5 
+        if (apellidos == null || apellidos.trim().length() < 5
                 || apellidos.trim().length() > 30) {
             throw new IllegalArgumentException("Los apellidos son obligatorios "
                     + "y deben tener entre 5 y 30 caracteres.");
@@ -94,7 +94,7 @@ public class Cliente extends Usuario {
     }
 
     public void setAfp(String afp) {
-        if (afp == null || afp.trim().length() < 4 
+        if (afp == null || afp.trim().length() < 4
                 || afp.trim().length() > 30) {
             throw new IllegalArgumentException("La AFP debe tener entre 4 y 30 "
                     + "caracteres.");

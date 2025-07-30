@@ -51,7 +51,7 @@ public class AccidenteTest {
             accidente.setDia("FinDeSemana"); // No es un día de la semana válido
         });
         assertTrue(exception.getMessage()
-                .contains("El día del accidente es obligatorio y debe tener el formato DD/MM/AAAA."));
+                .contains("El dia del accidente es obligatorio y debe tener el formato DD/MM/AAAA."));
     }
 
 }

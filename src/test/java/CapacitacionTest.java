@@ -15,7 +15,7 @@ public class CapacitacionTest {
 
     @Test
     void testConstructorAndGetters() {
-        Capacitacion capacitacion = new Capacitacion(1, 12345678, "Lunes", 
+        Capacitacion capacitacion = new Capacitacion(1, 12345678, "Lunes",
                 "10:00", "Sala A de diez caracteres", 60, 15);
 
         assertEquals(1, capacitacion.getIdentificador());
@@ -29,7 +29,7 @@ public class CapacitacionTest {
 
     @Test
     void testSetDiaValido() {
-        Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00", 
+        Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00",
                 "Lugar Test Capacitacion", 10, 10);
         capacitacion.setDia("miercoles");
         assertEquals("miercoles", capacitacion.getDia());
@@ -37,7 +37,7 @@ public class CapacitacionTest {
 
     @Test
     void testSetDiaInvalido() {
-        Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00", 
+        Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00",
                 "Lugar Test Capacitacion", 10, 10);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             capacitacion.setDia("DiaDePrueba");
@@ -48,10 +48,9 @@ public class CapacitacionTest {
 
     @Test
     void testSetIdentificadorInvalido() {
-        Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00", 
+        Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00",
                 "Lugar Test Capacitacion", 10, 10);
-        Exception exception = assertThrows(IllegalArgumentException.class, () 
-                -> {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             capacitacion.setIdentificador(0); // Debe ser mayor a 0
         });
         assertTrue(exception.getMessage().contains("El identificador de la "

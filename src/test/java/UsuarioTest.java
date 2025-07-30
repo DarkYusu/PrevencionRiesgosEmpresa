@@ -43,6 +43,5 @@ public class UsuarioTest {
         });
         assertTrue(exception.getMessage().contains("El nombre es obligatorio y debe tener entre 10 y 50 caracteres."));
     }
-    
-    
+
 }
