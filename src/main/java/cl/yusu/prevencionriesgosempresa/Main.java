@@ -7,7 +7,7 @@ package cl.yusu.prevencionriesgosempresa;
  *
  * @author anton
  */
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         Contenedor contenedor = Contenedor.crearContenedorConDatosDePrueba();
