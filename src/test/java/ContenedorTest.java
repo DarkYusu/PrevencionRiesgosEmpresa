@@ -6,6 +6,7 @@
 import cl.yusu.prevencionriesgosempresa.Asesoria;
 import cl.yusu.prevencionriesgosempresa.Cliente;
 import cl.yusu.prevencionriesgosempresa.Contenedor;
+import cl.yusu.prevencionriesgosempresa.Profesional;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,6 +43,15 @@ public class ContenedorTest {
         assertEquals(initialSize + 1, getListaAsesoria().size(), "La lista de asesorías debe aumentar en 1 después de almacenar un cliente.");
         assertTrue(getListaAsesoria().contains(cliente), "El cliente almacenado debe estar en la lista.");
 
+    }
+    
+    @Test
+    void testListarUsuariosConDatos() throws NoSuchFieldException, IllegalAccessException {
+        contenedor.almacenarCliente(new Cliente("Cliente Test List", "01/01/1990", 11111111, 12345678, "Nombre", "Apellido", "912345678", "AFP Prueba", 1, "Dir", "Com", 30));
+        contenedor.almacenarProfesional(new Profesional("Profesional Test List", "02/02/1985", 22222222, "Ingenierodiez", "01/01/2010"));
+        
+        // El test solo verifica que el método se ejecuta sin excepciones
+        assertDoesNotThrow(() -> contenedor.listarUsuarios(), "Listar usuarios con datos no debe lanzar excepción.");
     }
 
 }
