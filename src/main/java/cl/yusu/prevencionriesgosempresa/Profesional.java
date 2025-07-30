@@ -51,7 +51,7 @@ public class Profesional extends Usuario {
 
     @Override
     public void setRun(int run) {
-        System.out.println("Ingrese su rut sin el guion, ni el ultimo numero ");
+        System.out.println("Ingrese su rut sin el guion");
         if (run >= 0 && run < 99999999) {
             this.run = run;
         } else {

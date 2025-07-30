@@ -13,45 +13,43 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class AdministrativoTest {
 
-    @Test
-    void testConstructorAndGetters() {
-        Administrativo admin = new Administrativo("NombreDeDiezCaracteres", 
-                "01/01/1990",12345678, "Recursos Humanos", "Exp.");
-        assertEquals("NombreDeDiezCaracteres", admin.getNombre());
-        assertEquals("01/01/1990", admin.getFechaNacimiento());
-        assertEquals(12345678, admin.getRun());
-        assertEquals("Recursos Humanos", admin.getArea());
-        assertEquals("Exp.", admin.getExperienciaPrevia());
-    }
+        @Test
+        void testConstructorAndGetters() {
+                Administrativo admin = new Administrativo("NombreDeDiezCaracteres",
+                                "01/01/1990", 12345678, "Recursos Humanos", "Exp.");
+                assertEquals("NombreDeDiezCaracteres", admin.getNombre());
+                assertEquals("01/01/1990", admin.getFechaNacimiento());
+                assertEquals(12345678, admin.getRun());
+                assertEquals("Recursos Humanos", admin.getArea());
+                assertEquals("Exp.", admin.getExperienciaPrevia());
+        }
 
+        @Test
+        void testSetAreaValida() {
+                Administrativo admin = new Administrativo("NombreDeDiezCaracteres",
+                                "01/01/1990", 12345678, "Recursos Humanos", "Exp.");
+                admin.setArea("Recursos Humanos"); // 16 caracteres, válido
+                assertEquals("Recursos Humanos", admin.getArea());
+        }
 
-   @Test
-    void testSetAreaValida() {
-        Administrativo admin = new Administrativo("NombreDeDiezCaracteres", 
-                "01/01/1990",12345678, "Recursos Humanos", "Exp.");
-        admin.setArea("Recursos Humanos"); // 16 caracteres, válido
-        assertEquals("Recursos Humanos", admin.getArea());
-    }
+        @Test
+        void testSetAreaInvalida_Corta() {
+                Administrativo admin = new Administrativo("NombreDeDiezCaracteres",
+                                "01/01/1990", 12345678, "Recursos Humanos", "Exp.");
+                Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+                        admin.setArea("RH"); // Menos de 5 caracteres
+                });
+                assertTrue(exception.getMessage().contains("El area debe tener entre 5 "
+                                + "y 50 caracteres."));
+        }
 
-    @Test
-    void testSetAreaInvalida_Corta() {
-        Administrativo admin = new Administrativo("NombreDeDiezCaracteres", 
-                "01/01/1990",12345678, "Recursos Humanos", "Exp.");
-        Exception exception = assertThrows(IllegalArgumentException.class, () 
-                -> {
-            admin.setArea("RH"); // Menos de 5 caracteres
-        });
-        assertTrue(exception.getMessage().contains("El area debe tener entre 5 "
-                + "y 50 caracteres."));
-    }
-
-    @Test
-    void testSetExperienciaPreviaValida() {
-        Administrativo admin = new Administrativo("NombreDeDiezCaracteres", 
-                "01/01/1990",12345678, "Recursos Humanos", "Exp.");
-        admin.setExperienciaPrevia("Manejo de equipos y proyectos");
-        assertEquals("Manejo de equipos y proyectos", 
-                admin.getExperienciaPrevia());
-    }
+        @Test
+        void testSetExperienciaPreviaValida() {
+                Administrativo admin = new Administrativo("NombreDeDiezCaracteres",
+                                "01/01/1990", 12345678, "Recursos Humanos", "Exp.");
+                admin.setExperienciaPrevia("Manejo de equipos y proyectos");
+                assertEquals("Manejo de equipos y proyectos",
+                                admin.getExperienciaPrevia());
+        }
 
 }

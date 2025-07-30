@@ -37,6 +37,7 @@ public class RevisionTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             rev.setIdentificadorRevision(0); // Inválido
         });
-        assertTrue(exception.getMessage().contains("El identificador de la revision es obligatorio y debe ser un número positivo."));
+        assertTrue(exception.getMessage()
+                .contains("El identificador de la revision es obligatorio y debe ser un número positivo."));
     }
 }

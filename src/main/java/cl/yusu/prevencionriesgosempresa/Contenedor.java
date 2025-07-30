@@ -168,7 +168,7 @@ public class Contenedor {
         }
         System.out.println("----------------------------------------");
     }
-    
+
     // --- Metodos de gestion para Accidente, VisitaEnTerreno, Revision ---
     public void almacenarAccidente(Accidente accidente) {
         if (accidente != null) {
@@ -270,8 +270,7 @@ public class Contenedor {
             System.out.println(rev.toString());
             VisitaEnTerreno visitaAsociada = null;
             for (VisitaEnTerreno vis : listaVisitasEnTerreno) {
-                if (vis.getIdentificadorVisitaTerreno()
-                        == rev.getIdentificadorVisitaTerreno()) {
+                if (vis.getIdentificadorVisitaTerreno() == rev.getIdentificadorVisitaTerreno()) {
                     visitaAsociada = vis;
                     break;
                 }
@@ -289,46 +288,46 @@ public class Contenedor {
         }
         System.out.println("----------------------------------------");
     }
-    
+
     public static Contenedor crearContenedorConDatosDePrueba() {
         Contenedor contenedor = new Contenedor();
 
         System.out.println("Cargando datos de prueba...");
 
         // Clientes
-            Cliente cliente1 = new Cliente("Empresa Ejemplo Spa", "10/03/1975", 
+        Cliente cliente1 = new Cliente("Empresa Ejemplo Spa", "10/03/1975",
                 12345678, 98765432, "Juanito", "Perez", "911112222", "Habitat",
-                    1, "Calle Falsa 123", "Santiago", 48);
+                1, "Calle Falsa 123", "Santiago", 48);
         Cliente cliente2 = new Cliente("Constructora XYZ Ltda", "25/11/1980",
-                23456789, 87654321, "Mariana", "Gonzalez", "933334444", 
+                23456789, 87654321, "Mariana", "Gonzalez", "933334444",
                 "Capital", 2, "Avenida Siempre Viva 456", "Providencia", 43);
         contenedor.almacenarCliente(cliente1);
         contenedor.almacenarCliente(cliente2);
 
         // Profesionales
-        Profesional profesional1 = new Profesional("Dr. Ana Rodriguez", 
-                "05/09/1982", 34567890, "Ingeniero en Prevencion de Riesgos", 
+        Profesional profesional1 = new Profesional("Dr. Ana Rodriguez",
+                "05/09/1982", 34567890, "Ingeniero en Prevencion de Riesgos",
                 "15/07/2005");
-        Profesional profesional2 = new Profesional("Lic. Pedro Martinez", 
+        Profesional profesional2 = new Profesional("Lic. Pedro Martinez",
                 "11/11/1978", 56789012, "Especialista en Seguridad Industrial",
                 "20/03/2008");
         contenedor.almacenarProfesional(profesional1);
         contenedor.almacenarProfesional(profesional2);
 
         // Administrativos
-        Administrativo administrativo1 = new Administrativo("Carlos Fuentes", 
+        Administrativo administrativo1 = new Administrativo("Carlos Fuentes",
                 "12/04/1995", 45678901, "Contabilidad", "Experiencia en "
                         + "auditoria financiera.");
-        Administrativo administrativo2 = new Administrativo("Laura Diaz", 
+        Administrativo administrativo2 = new Administrativo("Laura Diaz",
                 "20/07/1993", 67890123, "Recursos Humanos", "Manejo de nóminas"
                         + " y beneficios.");
         contenedor.almacenarAdministrativo(administrativo1);
         contenedor.almacenarAdministrativo(administrativo2);
 
         // Capacitaciones
-        Capacitacion cap1 = new Capacitacion(1, 98765432, "Lunes", "09:00", 
+        Capacitacion cap1 = new Capacitacion(1, 98765432, "Lunes", "09:00",
                 "Sala Capacitacion 1", 70, 15);
-        Capacitacion cap2 = new Capacitacion(2, 87654321, "Miercoles", "15:00", 
+        Capacitacion cap2 = new Capacitacion(2, 87654321, "Miercoles", "15:00",
                 "Auditorio Central", 70, 40);
         contenedor.almacenarCapacitacion(cap1);
         contenedor.almacenarCapacitacion(cap2);
@@ -336,23 +335,23 @@ public class Contenedor {
         // Accidentes
         Accidente acc1 = new Accidente(1, 98765432, "10/07/2025", "11:00",
                 "Planta de Produccion", "Falla de maquinaria", "Lesion leve en mano");
-        Accidente acc2 = new Accidente(2, 87654321, "15/07/2025", "08:45", 
+        Accidente acc2 = new Accidente(2, 87654321, "15/07/2025", "08:45",
                 "Area de Montaje", "Caida de herramienta", "Corte superficial");
         contenedor.almacenarAccidente(acc1);
         contenedor.almacenarAccidente(acc2);
 
         // Visitas en Terreno
-        VisitaEnTerreno vis1 = new VisitaEnTerreno(1, 98765432, "01/08/2025", 
+        VisitaEnTerreno vis1 = new VisitaEnTerreno(1, 98765432, "01/08/2025",
                 "10:00", "Bodega Principal", "Revision de almacenaje de materiales");
-        VisitaEnTerreno vis2 = new VisitaEnTerreno(2, 87654321, "05/08/2025", 
+        VisitaEnTerreno vis2 = new VisitaEnTerreno(2, 87654321, "05/08/2025",
                 "14:00", "Area de Construccion", "Seguimiento de obras en curso");
         contenedor.almacenarVisitaEnTerreno(vis1);
         contenedor.almacenarVisitaEnTerreno(vis2);
 
         // Revisiones (asociadas a visitas en terreno)
-        Revision rev1 = new Revision(1, 1, "Revision Bodega A", 
+        Revision rev1 = new Revision(1, 1, "Revision Bodega A",
                 "Verificar senaletica de seguridad", 1);
-        Revision rev2 = new Revision(2, 2, "Revision Obra B", 
+        Revision rev2 = new Revision(2, 2, "Revision Obra B",
                 "Chequear uso de EPP en altura", 2);
         contenedor.almacenarRevision(rev1);
         contenedor.almacenarRevision(rev2);
