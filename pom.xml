@@ -28,6 +28,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>24</maven.compiler.release>
-        <exec.mainClass>cl.yusu.prevencionriesgosempresa.main</exec.mainClass>
+        <exec.mainClass>cl.yusu.prevencionriesgosempresa.Main</exec.mainClass>
     </properties>
 </project>
