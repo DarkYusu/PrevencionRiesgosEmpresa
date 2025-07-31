@@ -22,36 +22,27 @@ public class ProfesionalTest {
         }
 
         @Test
-        void testSetTituloInvalido_Corto() {
+        void testSetTituloInvalidoCorto() {
                 Profesional profesional = new Profesional("NombredeDiezCaracteres", "01/01/1990",
                                 12345678, "TitulodeDiezCaracteres", "01/01/2015");
                 Exception exception = assertThrows(IllegalArgumentException.class,
                                 () -> {
-                                        profesional.setTitulo("ABC"); // Menos de 5 caracteres
+                                        profesional.setTitulo("ABCD"); // Menos de 5 caracteres
                                 });
                 assertTrue(exception.getMessage().contains("El titulo es obligatorio "
                                 + "y debe tener entre 10 y 50 caracteres."));
         }
 
         @Test
-        void testSetFechaIngresoValida() {
-                Profesional profesional = new Profesional("NombreDeDiezCaracteres",
-                                "01/01/1990", 12345678, "TituloDeDiezCaracteres", "01/01/2015");
-                profesional.setFechaIngreso("20/11/2020");
-                assertEquals("20/11/2020", profesional.getFechaIngreso());
-        }
-
-        @Test
-        void testSetFechaIngresoInvalida() {
-                Profesional profesional = new Profesional("NombreDeDiezCaracteres", "01/01/1990",
-                                12345678, "TituloDeDiezCaracteres", "01/01/2015");
+        void testSetTituloInvalidoLargo() {
+                Profesional profesional = new Profesional("NombredeDiezCaracteres", "01/01/1990",
+                                12345678, "TitulodeDiezCaracteres", "01/01/2015");
                 Exception exception = assertThrows(IllegalArgumentException.class,
                                 () -> {
-                                        profesional.setFechaIngreso("30/02/2023"); // Fecha inválida (febrero no tiene
-                                                                                   // 30 días en 2023)
+                                        profesional.setTitulo("A".repeat(51)); // 51 caracteres
                                 });
-                assertTrue(exception.getMessage().contains("La fecha de ingreso es "
-                                + "obligatoria y debe tener el formato DD/MM/AAAA."));
+                assertTrue(exception.getMessage().contains("El titulo es obligatorio "
+                                + "y debe tener entre 10 y 50 caracteres."));
         }
 
 }

@@ -44,8 +44,7 @@ public class Administrativo extends Usuario {
     public void setExperienciaPrevia(String experienciaPrevia) {
         if (experienciaPrevia != null
                 && experienciaPrevia.trim().length() > 100) {
-            throw new IllegalArgumentException("La experiencia previa no puede "
-                    + "exceder los 100 caracteres.");
+            throw new IllegalArgumentException("La experiencia previa no puede exceder los 100 caracteres.");
         }
         this.experienciaPrevia = experienciaPrevia;
     }

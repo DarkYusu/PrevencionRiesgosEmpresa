@@ -39,8 +39,8 @@ public class AccidenteTest {
     void testSetDiaValido() {
         Accidente accidente = new Accidente(1, 123, "01/01/2023", "10:00", "Lugar Test Accidente", "Origen",
                 "Consecuencias");
-        accidente.setDia("01/01/2023");
-        assertEquals("01/01/2023", accidente.getDia());
+        accidente.setDia("01/07/2023");
+        assertEquals("01/07/2023", accidente.getDia());
     }
 
     @Test

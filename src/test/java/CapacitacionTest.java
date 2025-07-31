@@ -57,4 +57,15 @@ public class CapacitacionTest {
                 + "capacitacion es obligatorio y debe ser un numero positivo."));
     }
 
+    @Test
+    void testSetIdentificadorInvalidoNegativo() {
+        Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00",
+                "Lugar Test Capacitacion", 10, 10);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            capacitacion.setIdentificador(-1); // Debe ser mayor a 0
+        });
+        assertTrue(exception.getMessage().contains("El identificador de la "
+                + "capacitacion es obligatorio y debe ser un numero positivo."));
+    }
+
 }

@@ -33,11 +33,22 @@ public class AdministrativoTest {
         }
 
         @Test
-        void testSetAreaInvalida_Corta() {
+        void testSetAreaInvalidaCorta() {
                 Administrativo admin = new Administrativo("NombreDeDiezCaracteres",
                                 "01/01/1990", 12345678, "Recursos Humanos", "Exp.");
                 Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-                        admin.setArea("RH"); // Menos de 5 caracteres
+                        admin.setArea("RRHH"); // Menos de 5 caracteres
+                });
+                assertTrue(exception.getMessage().contains("El area es obligatoria y debe "
+                                + "tener entre 5 y 20 caracteres."));
+        }
+
+        @Test
+        void testSetAreaInvalidaLarga() {
+                Administrativo admin = new Administrativo("NombreDeDiezCaracteres",
+                                "01/01/1990", 12345678, "Recursos Humanos", "Exp.");
+                Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+                        admin.setArea("A".repeat(21)); // 21 caracteres
                 });
                 assertTrue(exception.getMessage().contains("El area es obligatoria y debe "
                                 + "tener entre 5 y 20 caracteres."));
@@ -50,6 +61,26 @@ public class AdministrativoTest {
                 admin.setExperienciaPrevia("Manejo de equipos y proyectos");
                 assertEquals("Manejo de equipos y proyectos",
                                 admin.getExperienciaPrevia());
+        }
+
+        @Test
+        void testSetExperienciaPreviaInvalidaNula() {
+                Administrativo admin = new Administrativo("NombreDeDiezCaracteres",
+                                "01/01/1990", 12345678, "Recursos Humanos", "Exp.");
+                Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+                        admin.setExperienciaPrevia(null); // Experiencia previa nula
+                });
+                assertTrue(exception.getMessage().contains("La experiencia previa no puede ser nula."));
+        }
+
+        @Test
+        void testSetExperienciaPreviaInvalidaLarga() {
+                Administrativo admin = new Administrativo("NombreDeDiezCaracteres",
+                                "01/01/1990", 12345678, "Recursos Humanos", "Exp.");
+                Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+                        admin.setExperienciaPrevia("A".repeat(101)); // 101 caracteres
+                });
+                assertTrue(exception.getMessage().contains("La experiencia previa no puede exceder los 100 caracteres."));
         }
 
 }

@@ -46,8 +46,7 @@ public class Cliente extends Usuario {
 
     public void setRut(int rut) {
         if (rut < 0 || rut >= 99999999) {
-            throw new IllegalArgumentException("El RUT debe ser un numero "
-                    + "positivo menor a 99.999.999.");
+            throw new IllegalArgumentException("El RUT debe ser un numero positivo menor a 99.999.999.");
         }
         this.rut = rut;
     }

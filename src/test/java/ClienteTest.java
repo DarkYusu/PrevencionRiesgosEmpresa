@@ -15,13 +15,12 @@ public class ClienteTest {
 
     @Test
     void testConstructorAndGetters() {
-        Cliente cliente = new Cliente("Empresa XYZ Cliente", "01/01/1980", 10000000, 98765432, "NombreDeDiezCaracteres",
+        Cliente cliente = new Cliente("Empresa XYZ Cliente", "01/01/1980", 99999998, 98765432, "NombreDeDiezCaracteres",
                 "ApellidoDeDiezCaracteres", "912345678", "Habitat", 1, "Calle Falsa 123", "Santiago", 40);
 
         assertEquals("Empresa XYZ Cliente", cliente.getNombre());
         assertEquals("01/01/1980", cliente.getFechaNacimiento());
-        assertEquals(10000000, cliente.getRun());
-
+        assertEquals(99999998, cliente.getRun());
         assertEquals(98765432, cliente.getRut());
         assertEquals("NombreDeDiezCaracteres", cliente.getNombres());
         assertEquals("ApellidoDeDiezCaracteres", cliente.getApellidos());
@@ -42,21 +41,23 @@ public class ClienteTest {
     }
 
     @Test
-    void testSetNombresInvalido_Corto() {
+    void testSetRutInvalidoNegativo() {
         Cliente cliente = new Cliente("EmpresaDeDiezCaracteres", "01/01/1990", 12345678, 11111111,
                 "NombreDeDiezCaracteres", "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            cliente.setNombres("Juan"); // 4 caracteres, inválido
+            cliente.setRut(-1); // RUT inválido (negativo)
         });
-        assertTrue(
-                exception.getMessage().contains("Los nombres son obligatorios y deben tener entre 5 y 30 caracteres."));
+        assertTrue(exception.getMessage().contains("El RUT debe ser un numero positivo menor a 99.999.999."));
     }
 
     @Test
-    void testSetApellidosValido() {
+    void testSetRutInvalidoPositivo() {
         Cliente cliente = new Cliente("EmpresaDeDiezCaracteres", "01/01/1990", 12345678, 11111111,
                 "NombreDeDiezCaracteres", "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
-        cliente.setApellidos("ApellidosValido");
-        assertEquals("ApellidosValido", cliente.getApellidos());
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            cliente.setRut(99999999); // RUN inválido (positivo, mayor a 99.999.99)
+        });
+        assertTrue(exception.getMessage().contains("El RUT debe ser un numero positivo menor a 99.999.999."));
     }
+
 }

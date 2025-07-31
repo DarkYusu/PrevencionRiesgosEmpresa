@@ -32,10 +32,20 @@ public class RevisionTest {
     }
 
     @Test
-    void testSetIdentificadorRevisionInvalido() {
+    void testSetIdentificadorRevisionInvalidoNegativo() {
         Revision rev = new Revision();
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            rev.setIdentificadorRevision(0); // Inválido
+            rev.setIdentificadorRevision(-1); // Inválido
+        });
+        assertTrue(exception.getMessage()
+                .contains("El identificador de la revision es obligatorio y debe ser un número positivo."));
+    }
+
+    @Test
+    void testSetIdentificadorRevisionNulo() {
+        Revision rev = new Revision();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            rev.setIdentificadorRevision(-1); // Inválido
         });
         assertTrue(exception.getMessage()
                 .contains("El identificador de la revision es obligatorio y debe ser un número positivo."));

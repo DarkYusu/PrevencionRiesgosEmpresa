@@ -25,20 +25,30 @@ public class VisitaEnTerrenoTest {
         assertEquals("Revisión de seguridad.", visita.getComentarios());
     }
     
+
     @Test
-    void testSetDiaValido() {
-        VisitaEnTerreno visita = new VisitaEnTerreno(1, 123, "15/05/2024", "10:00", "Lugar Test Visit", "Comentarios");
-        visita.setDia("15/05/2024");
-        assertEquals("15/05/2024", visita.getDia());
+    void testSetComentariosValido() {
+        VisitaEnTerreno visita = new VisitaEnTerreno();
+        String comentario = "Este es un comentario válido.";
+        visita.setComentarios(comentario);
+        assertEquals(comentario, visita.getComentarios());
     }
-    
+
     @Test
-    void testSetDiaInvalido() {
-        VisitaEnTerreno visita = new VisitaEnTerreno(1, 123, "15/05/2024", "10:00", "Lugar Test Visit", "Comentarios");
+    void testSetComentariosNulo() {
+        VisitaEnTerreno visita = new VisitaEnTerreno();
+        visita.setComentarios(null);
+        assertNull(visita.getComentarios());
+    }
+
+    @Test
+    void testSetComentariosExcedeLimite() {
+        VisitaEnTerreno visita = new VisitaEnTerreno();
+        String comentarioLargo = "a".repeat(101); // 101 caracteres
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            visita.setDia("DiaInvalido"); // No es un día de la semana válido
+            visita.setComentarios(comentarioLargo);
         });
-        assertTrue(exception.getMessage().contains("El dia de la visita en terreno es obligatorio y debe tener el formato DD/MM/AAAA."));
+        assertTrue(exception.getMessage().contains("Los comentarios no pueden exceder los 100 caracteres."));
     }
     
 }

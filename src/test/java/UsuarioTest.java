@@ -44,4 +44,13 @@ public class UsuarioTest {
         assertTrue(exception.getMessage().contains("El nombre es obligatorio y debe tener entre 10 y 50 caracteres."));
     }
 
+        @Test
+    void testSetNombreInvalido_LongitudLarga() {
+        UsuarioConcreta usuario = new UsuarioConcreta("NombreDeDiezCaracteres", "01/01/1990", 123);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            usuario.setNombre("a".repeat(51)); // 101 caracteres
+        });
+        assertTrue(exception.getMessage().contains("El nombre es obligatorio y debe tener entre 10 y 50 caracteres."));
+    }
+
 }
