@@ -36,22 +36,27 @@ public class AccidenteTest {
     }
 
     @Test
-    void testSetDiaValido() {
+    void testSetIdentificadorAccidenteInvalido() {
         Accidente accidente = new Accidente(1, 123, "01/01/2023", "10:00", "Lugar Test Accidente", "Origen",
                 "Consecuencias");
-        accidente.setDia("01/07/2023");
-        assertEquals("01/07/2023", accidente.getDia());
+        accidente.setIdentificadorAccidente(-1);
+        assertEquals(1, accidente.getIdentificadorAccidente());
     }
 
     @Test
-    void testSetDiaInvalido() {
+    void testLugarValido() {
         Accidente accidente = new Accidente(1, 123, "01/01/2023", "10:00", "Lugar Test Accidente", "Origen",
                 "Consecuencias");
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            accidente.setDia("FinDeSemana"); // No es un día de la semana válido
-        });
-        assertTrue(exception.getMessage()
-                .contains("El dia del accidente es obligatorio y debe tener el formato DD/MM/AAAA."));
+        accidente.setLugar("Nuevo Lugar de Accidente");
+        assertEquals("Nuevo Lugar de Accidente", accidente.getLugar());
+    }
+
+    @Test
+    void testLugarInvalido() {
+        Accidente accidente = new Accidente(1, 123, "01/01/2023", "10:00", "Lugar Test Accidente", "Origen",
+                "Consecuencias");
+        accidente.setLugar("Corto"); // Lugar demasiado corto
+        assertEquals("Lugar Test Accidente", accidente.getLugar()); // Verifica que no se cambió
     }
 
 }

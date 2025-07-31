@@ -39,10 +39,10 @@ public class Accidente {
 
     public void setIdentificadorAccidente(int identificadorAccidente) {
         if (identificadorAccidente <= 0) {
-            throw new IllegalArgumentException("El identificador del accidente "
-                    + "es obligatorio y debe ser un numero positivo.");
+            System.out.println("Error: El identificador del accidente es obligatorio y debe ser un número positivo.");
+        } else {
+            this.identificadorAccidente = identificadorAccidente;
         }
-        this.identificadorAccidente = identificadorAccidente;
     }
 
     public int getRutCliente() {
@@ -51,10 +51,10 @@ public class Accidente {
 
     public void setRutCliente(int rutCliente) {
         if (rutCliente <= 0) {
-            throw new IllegalArgumentException("El RUT del cliente es "
-                    + "obligatorio.");
+            System.out.println("Error: El RUT del cliente es obligatorio.");
+        } else {
+            this.rutCliente = rutCliente;
         }
-        this.rutCliente = rutCliente;
     }
 
     public String getDia() {
@@ -63,10 +63,10 @@ public class Accidente {
 
     public void setDia(String dia) {
         if (!ValidadorFechaHora.isValidarFecha(dia)) {
-            throw new IllegalArgumentException("El dia del accidente es "
-                    + "obligatorio y debe tener el formato DD/MM/AAAA.");
+            System.out.println("Error: El día del accidente es obligatorio y debe tener el formato DD/MM/AAAA.");
+        } else {
+            this.dia = dia;
         }
-        this.dia = dia;
     }
 
     public String getHora() {
@@ -75,10 +75,10 @@ public class Accidente {
 
     public void setHora(String hora) {
         if (!ValidadorFechaHora.isValidarHora(hora)) {
-            throw new IllegalArgumentException("La hora del accidente es "
-                    + "obligatoria y debe tener el formato HH:MM.");
+            System.out.println("Error: La hora del accidente es obligatoria y debe tener el formato HH:MM.");
+        } else {
+            this.hora = hora;
         }
-        this.hora = hora;
     }
 
     public String getLugar() {
@@ -86,12 +86,11 @@ public class Accidente {
     }
 
     public void setLugar(String lugar) {
-        if (lugar == null || lugar.trim().length() < 10
-                || lugar.trim().length() > 50) {
-            throw new IllegalArgumentException("El lugar del accidente es "
-                    + "obligatorio y debe tener entre 10 y 50 caracteres.");
+        if (lugar == null || lugar.trim().length() < 10 || lugar.trim().length() > 50) {
+            System.out.println("Error: El lugar del accidente es obligatorio y debe tener entre 10 y 50 caracteres.");
+        } else {
+            this.lugar = lugar;
         }
-        this.lugar = lugar;
     }
 
     public String getOrigen() {
@@ -100,10 +99,10 @@ public class Accidente {
 
     public void setOrigen(String origen) {
         if (origen != null && origen.trim().length() > 100) {
-            throw new IllegalArgumentException("El origen no puede exceder los "
-                    + "100 caracteres.");
+            System.out.println("Error: El origen no puede exceder los 100 caracteres.");
+        } else {
+            this.origen = origen;
         }
-        this.origen = origen;
     }
 
     public String getConsecuencias() {
@@ -112,10 +111,10 @@ public class Accidente {
 
     public void setConsecuencias(String consecuencias) {
         if (consecuencias != null && consecuencias.trim().length() > 100) {
-            throw new IllegalArgumentException("Las consecuencias no pueden "
-                    + "exceder los 100 caracteres.");
+            System.out.println("Error: Las consecuencias no pueden exceder los 100 caracteres.");
+        } else {
+            this.consecuencias = consecuencias;
         }
-        this.consecuencias = consecuencias;
     }
 
     @Override
