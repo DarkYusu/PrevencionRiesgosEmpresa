@@ -38,65 +38,69 @@ public class Revision {
         return identificadorRevision;
     }
 
-    public void setIdentificadorRevision(int identificadorRevision) {
+    public boolean setIdentificadorRevision(int identificadorRevision) {
         if (identificadorRevision <= 0) {
-            throw new IllegalArgumentException("El identificador de la "
-                    + "revision es obligatorio y debe ser un número positivo.");
+            return false;
+        } else {
+            this.identificadorRevision = identificadorRevision;
+            return true;
         }
-        this.identificadorRevision = identificadorRevision;
     }
 
     public int getIdentificadorVisitaTerreno() {
         return identificadorVisitaTerreno;
     }
 
-    public void setIdentificadorVisitaTerreno(int identificadorVisitaTerreno) {
+    public boolean setIdentificadorVisitaTerreno(int identificadorVisitaTerreno) {
         if (identificadorVisitaTerreno <= 0) {
-            throw new IllegalArgumentException("El identificador de la visita "
-                    + "en terreno es obligatorio.");
+            return false;
+        } else {
+            this.identificadorVisitaTerreno = identificadorVisitaTerreno;
+            return true;
         }
-        this.identificadorVisitaTerreno = identificadorVisitaTerreno;
     }
 
     public String getNombreAlusivoRevision() {
         return nombreAlusivoRevision;
     }
 
-    public void setNombreAlusivoRevision(String nombreAlusivoRevision) {
+    public boolean setNombreAlusivoRevision(String nombreAlusivoRevision) {
         if (nombreAlusivoRevision == null ||
                 nombreAlusivoRevision.trim().length() < 10 ||
                 nombreAlusivoRevision.trim().length() > 50) {
-            throw new IllegalArgumentException("El nombre alusivo a "
-                    + "la revision es obligatorio y debe tener entre "
-                    + "10 y 50 caracteres.");
+            return false;
+        } else {
+            this.nombreAlusivoRevision = nombreAlusivoRevision;
+            return true;
         }
-        this.nombreAlusivoRevision = nombreAlusivoRevision;
     }
 
     public String getDetalleParaRevisar() {
         return detalleParaRevisar;
     }
 
-    public void setDetalleParaRevisar(String detalleParaRevisar) {
+    public boolean setDetalleParaRevisar(String detalleParaRevisar) {
         if (detalleParaRevisar != null &&
                 detalleParaRevisar.trim().length() > 100) {
-            throw new IllegalArgumentException("El detalle para revisar no"
-                    + " puede exceder los 100 caracteres.");
+            return false;
+        } else {
+            this.detalleParaRevisar = detalleParaRevisar;
+            return true;
         }
-        this.detalleParaRevisar = detalleParaRevisar;
+
     }
 
     public int getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public boolean setEstado(int estado) {
         if (!ESTADOS_PERMITIDOS.contains(estado)) {
-            throw new IllegalArgumentException("El estado debe ser 1 "
-                    + "(sin problemas), 2 (con observaciones) o 3 "
-                    + "(no aprueba).");
+            return false;
+        } else {
+            this.estado = estado;
+            return true;
         }
-        this.estado = estado;
     }
 
     @Override
