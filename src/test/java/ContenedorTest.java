@@ -35,7 +35,7 @@ public class ContenedorTest {
 
     @Test
     void testAlmacenarCliente() throws NoSuchFieldException, IllegalAccessException {
-        Cliente cliente = new Cliente("Cliente Test 1", "01/01/1990", 11111111, 12345678, "NombreC1", "ApellidoC1", "912345678", "AFP Prueba", 1, "Dir Prueba 1", "Comuna Prueba 1", 30);
+        Cliente cliente = new Cliente("Cliente Test 1", "01/01/1990", 11111111, 12345678,  "ApellidoC1", "912345678", "AFP Prueba", 1, "Dir Prueba 1", "Comuna Prueba 1", 30);
 
         int initialSize = getListaAsesoria().size();
         contenedor.almacenarCliente(cliente);
@@ -47,7 +47,7 @@ public class ContenedorTest {
     
     @Test
     void testListarUsuariosConDatos() throws NoSuchFieldException, IllegalAccessException {
-        contenedor.almacenarCliente(new Cliente("Cliente Test List", "01/01/1990", 11111111, 12345678, "Nombre", "Apellido", "912345678", "AFP Prueba", 1, "Dir", "Com", 30));
+        contenedor.almacenarCliente(new Cliente("Cliente Test List", "01/01/1990", 11111111, 12345678,  "ApellidoC1", "912345678", "AFP Prueba", 1, "Dir Prueba 1", "Comuna Prueba 1", 30));
         contenedor.almacenarProfesional(new Profesional("Profesional Test List", "02/02/1985", 22222222, "Ingenierodiez", "01/01/2010"));
         
         // El test solo verifica que el método se ejecuta sin excepciones

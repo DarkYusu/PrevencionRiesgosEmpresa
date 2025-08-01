@@ -31,7 +31,7 @@ public class Contenedor {
     public void almacenarCliente(Cliente cliente) {
         if (cliente != null) {
             listaAsesoria.add(cliente);
-            System.out.println("Cliente " + cliente.getNombres()
+            System.out.println("Cliente " + cliente.getNombre()
                     + " almacenado exitosamente.");
         } else {
             System.out.println("No se puede almacenar un cliente nulo.");
@@ -206,10 +206,10 @@ public class Contenedor {
 
         // Clientes
         Cliente cliente1 = new Cliente("Empresa Ejemplo Spa", "10/03/1975",
-                12345678, 98765432, "Juanito", "Perez", "911112222", "Habitat",
+                12345678, 98765432,  "Perez", "911112222", "Habitat",
                 1, "Calle Falsa 123", "Santiago", 48);
         Cliente cliente2 = new Cliente("Constructora XYZ Ltda", "25/11/1980",
-                23456789, 87654321, "Mariana", "Gonzalez", "933334444",
+                23456789, 87654321,  "Gonzalez", "933334444",
                 "Capital", 2, "Avenida Siempre Viva 456", "Providencia", 43);
         contenedor.almacenarCliente(cliente1);
         contenedor.almacenarCliente(cliente2);

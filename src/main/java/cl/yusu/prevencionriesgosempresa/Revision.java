@@ -19,15 +19,14 @@ public class Revision {
     private String detalleParaRevisar;
     private int estado;
 
-    private static final List<Integer> ESTADOS_PERMITIDOS = 
-            Arrays.asList(1, 2, 3);
+    private static final List<Integer> ESTADOS_PERMITIDOS = Arrays.asList(1, 2, 3);
 
     public Revision() {
     }
 
-    public Revision(int identificadorRevision, int identificadorVisitaTerreno, 
+    public Revision(int identificadorRevision, int identificadorVisitaTerreno,
             String nombreAlusivoRevision,
-                    String detalleParaRevisar, int estado) {
+            String detalleParaRevisar, int estado) {
         setIdentificadorRevision(identificadorRevision);
         setIdentificadorVisitaTerreno(identificadorVisitaTerreno);
         setNombreAlusivoRevision(nombreAlusivoRevision);
@@ -64,7 +63,7 @@ public class Revision {
     }
 
     public void setNombreAlusivoRevision(String nombreAlusivoRevision) {
-        if (nombreAlusivoRevision == null || 
+        if (nombreAlusivoRevision == null ||
                 nombreAlusivoRevision.trim().length() < 10 ||
                 nombreAlusivoRevision.trim().length() > 50) {
             throw new IllegalArgumentException("El nombre alusivo a "
@@ -117,11 +116,11 @@ public class Revision {
                 estadoStr = "Desconocido";
         }
         return "Revision{" +
-               "identificadorRevision=" + identificadorRevision +
-               ", identificadorVisitaTerreno=" + identificadorVisitaTerreno +
-               ", nombreAlusivoRevision='" + nombreAlusivoRevision + '\'' +
-               ", detalleParaRevisar='" + detalleParaRevisar + '\'' +
-               ", estado=" + estadoStr +
-               '}';
+                "identificadorRevision=" + identificadorRevision +
+                ", identificadorVisitaTerreno=" + identificadorVisitaTerreno +
+                ", nombreAlusivoRevision='" + nombreAlusivoRevision + '\'' +
+                ", detalleParaRevisar='" + detalleParaRevisar + '\'' +
+                ", estado=" + estadoStr +
+                '}';
     }
 }

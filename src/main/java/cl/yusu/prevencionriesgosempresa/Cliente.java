@@ -12,7 +12,6 @@ package cl.yusu.prevencionriesgosempresa;
 public class Cliente extends Usuario {
 
     private int rut;
-    private String nombres;
     private String apellidos;
     private String telefono;
     private String afp;
@@ -21,17 +20,11 @@ public class Cliente extends Usuario {
     private String comuna;
     private int edad;
 
-    public Cliente() {
-        super();
-    }
-
-    public Cliente(String nombre, String fechaNacimiento, int run, int rut,
-            String nombres, String apellidos,
+    public Cliente(String nombre, String fechaNacimiento, int run, int rut, String apellidos,
             String telefono, String afp, int sistemaSalud, String direccion,
             String comuna, int edad) {
         super(nombre, fechaNacimiento, run);
         setRut(rut);
-        setNombres(nombres);
         setApellidos(apellidos);
         setTelefono(telefono);
         setAfp(afp);
@@ -51,19 +44,6 @@ public class Cliente extends Usuario {
             return true;
         } else {
             return false;
-        }
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public boolean setNombres(String nombres) {
-        if (nombres == null || nombres.trim().length() < 5 || nombres.trim().length() > 30) {
-            return false;
-        } else {
-            this.nombres = nombres.trim();
-            return true;
         }
     }
 
@@ -124,7 +104,7 @@ public class Cliente extends Usuario {
     }
 
     public boolean setDireccion(String direccion) {
-        if (direccion == null || direccion.trim().length() > 70) {
+        if (direccion == null || direccion.trim().isEmpty() || direccion.trim().length() > 70) {
             return false;
         } else {
             this.direccion = direccion.trim();
@@ -137,7 +117,7 @@ public class Cliente extends Usuario {
     }
 
     public boolean setComuna(String comuna) {
-        if (comuna == null || comuna.trim().length() > 50) {
+        if (comuna == null || comuna.trim().isEmpty() || comuna.trim().length() > 50) {
             return false;
         } else {
             this.comuna = comuna.trim();
@@ -162,7 +142,6 @@ public class Cliente extends Usuario {
     public String toString() {
         return "Cliente{"
                 + "rut=" + rut
-                + ", nombres='" + nombres + '\''
                 + ", apellidos='" + apellidos + '\''
                 + ", telefono='" + telefono + '\''
                 + ", afp='" + afp + '\''
@@ -174,7 +153,7 @@ public class Cliente extends Usuario {
     }
 
     public String obtenerNombre() {
-        return this.nombres + " " + this.apellidos;
+        return this.nombre + " " + this.apellidos;
     }
 
     public String obtenerSistemaSalud() {

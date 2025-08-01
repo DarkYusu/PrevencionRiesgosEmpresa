@@ -15,14 +15,14 @@ public class ClienteTest {
 
     @Test
     void testConstructorAndGetters() {
-        Cliente cliente = new Cliente("Empresa XYZ Cliente", "01/01/1980", 99999998, 98765432, "NombreDeDiezCaracteres",
+        Cliente cliente = new Cliente("Empresa XYZ Cliente", "01/01/1980", 99999998, 98765432,
                 "ApellidoDeDiezCaracteres", "912345678", "Habitat", 1, "Calle Falsa 123", "Santiago", 40);
 
         assertEquals("Empresa XYZ Cliente", cliente.getNombre());
         assertEquals("01/01/1980", cliente.getFechaNacimiento());
         assertEquals(99999998, cliente.getRun());
         assertEquals(98765432, cliente.getRut());
-        assertEquals("NombreDeDiezCaracteres", cliente.getNombres());
+        assertEquals("NombreDeDiezCaracteres", cliente.getNombre());
         assertEquals("ApellidoDeDiezCaracteres", cliente.getApellidos());
         assertEquals("912345678", cliente.getTelefono());
         assertEquals("Habitat", cliente.getAfp());
@@ -35,7 +35,7 @@ public class ClienteTest {
     @Test
     void testSetRutValido() {
         Cliente cliente = new Cliente("EmpresaDeDiezCaracteres", "01/01/1990", 12345678, 11111111,
-                "NombreDeDiezCaracteres", "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
+                "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
         cliente.setRut(22222222);
         assertEquals(22222222, cliente.getRut());
     }
@@ -43,7 +43,7 @@ public class ClienteTest {
     @Test
     void testSetRutInvalidoNegativo() {
         Cliente cliente = new Cliente("EmpresaDeDiezCaracteres", "01/01/1990", 12345678, 11111111,
-                "NombreDeDiezCaracteres", "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
+                "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             cliente.setRut(-1); // RUT inválido (negativo)
         });
@@ -53,7 +53,7 @@ public class ClienteTest {
     @Test
     void testSetRutInvalidoPositivo() {
         Cliente cliente = new Cliente("EmpresaDeDiezCaracteres", "01/01/1990", 12345678, 11111111,
-                "NombreDeDiezCaracteres", "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
+                "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             cliente.setRut(99999999); // RUN inválido (positivo, mayor a 99.999.99)
         });
