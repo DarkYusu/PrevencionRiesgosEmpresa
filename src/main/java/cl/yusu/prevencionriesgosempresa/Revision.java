@@ -69,10 +69,9 @@ public class Revision {
                 nombreAlusivoRevision.trim().length() < 10 ||
                 nombreAlusivoRevision.trim().length() > 50) {
             return false;
-        } else {
-            this.nombreAlusivoRevision = nombreAlusivoRevision;
-            return true;
         }
+        this.nombreAlusivoRevision = nombreAlusivoRevision;
+        return true;
     }
 
     public String getDetalleParaRevisar() {
@@ -80,14 +79,13 @@ public class Revision {
     }
 
     public boolean setDetalleParaRevisar(String detalleParaRevisar) {
-        if (detalleParaRevisar != null &&
+        if (detalleParaRevisar == null ||
+                detalleParaRevisar.trim().length() < 10 ||
                 detalleParaRevisar.trim().length() > 100) {
             return false;
-        } else {
-            this.detalleParaRevisar = detalleParaRevisar;
-            return true;
         }
-
+        this.detalleParaRevisar = detalleParaRevisar.trim();
+        return true;
     }
 
     public int getEstado() {
@@ -97,10 +95,9 @@ public class Revision {
     public boolean setEstado(int estado) {
         if (!ESTADOS_PERMITIDOS.contains(estado)) {
             return false;
-        } else {
-            this.estado = estado;
-            return true;
         }
+        this.estado = estado;
+        return true;
     }
 
     @Override
