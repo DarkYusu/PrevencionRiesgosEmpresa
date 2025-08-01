@@ -142,14 +142,8 @@ public class Cliente extends Usuario {
     public String toString() {
         return "Cliente{"
                 + "rut=" + rut
-                + ", apellidos='" + apellidos + '\''
-                + ", telefono='" + telefono + '\''
-                + ", afp='" + afp + '\''
-                + ", sistemaSalud=" + sistemaSalud
-                + ", direccion='" + direccion + '\''
-                + ", comuna='" + comuna + '\''
-                + ", edad=" + edad
-                + "} " + super.toString();
+                + ", apellidos='" + apellidos
+              + super.toString();
     }
 
     public String obtenerNombre() {

@@ -76,48 +76,89 @@ public class Menu {
     }
 
     private void almacenarCliente() {
-        try {
+        String nombre, fechaNacimiento, apellidos, telefono, afp, direccion, comuna;
+        int run, rut, sistemaSalud, edad;
+
+        do {
             System.out.print("Nombre (10-50 caracteres): ");
-            String nombre = scanner.nextLine();
+            nombre = scanner.nextLine();
+            
+        } while (nombre.length() < 10 || nombre.length() > 50);
+
+        do {
             System.out.print("Fecha Nacimiento (DD/MM/AAAA): ");
-            String fechaNacimiento = scanner.nextLine();
-            System.out.print("RUN (sin puntos ni guion, < 99.999.999): ");
-            int run = scanner.nextInt();
-            scanner.nextLine();
+            fechaNacimiento = scanner.nextLine();
+        } while (!ValidadorFechaHora.isValidarFecha(fechaNacimiento));
 
+        do {
+            System.out.print("RUN (sin puntos ni guion, < 99999999): ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Debe ingresar un número válido.");
+                scanner.next();
+            }
+            run = scanner.nextInt();
+            scanner.nextLine();
+        } while (run <= 0 || run >= 99999999);
+
+        do {
             System.out.print("RUT Cliente (sin puntos ni guion): ");
-            int rut = scanner.nextInt();
+            while (!scanner.hasNextInt()) {
+                System.out.println("Debe ingresar un número válido.");
+                scanner.next();
+            }
+            rut = scanner.nextInt();
             scanner.nextLine();
+        } while (rut <= 0);
+
+        do {
             System.out.print("Apellidos Cliente (5-30 caracteres): ");
-            String apellidos = scanner.nextLine();
+            apellidos = scanner.nextLine();
+        } while (apellidos.length() < 5 || apellidos.length() > 30);
+
+        do {
             System.out.print("Telefono Cliente (max 15 caracteres): ");
-            String telefono = scanner.nextLine();
+            telefono = scanner.nextLine();
+        } while (telefono.length() == 0 || telefono.length() > 15);
+
+        do {
             System.out.print("AFP Cliente (4-100 caracteres): ");
-            String afp = scanner.nextLine();
+            afp = scanner.nextLine();
+        } while (afp.length() < 4 || afp.length() > 100);
+
+        do {
             System.out.print("Sistema de Salud (1:Fonasa, 2:Isapre): ");
-            int sistemaSalud = scanner.nextInt();
+            while (!scanner.hasNextInt()) {
+                System.out.println("Debe ingresar 1 o 2.");
+                scanner.next();
+            }
+            sistemaSalud = scanner.nextInt();
             scanner.nextLine();
+        } while (sistemaSalud != 1 && sistemaSalud != 2);
+
+        do {
             System.out.print("Direccion Cliente (max 100 caracteres): ");
-            String direccion = scanner.nextLine();
+            direccion = scanner.nextLine();
+        } while (direccion.length() == 0 || direccion.length() > 100);
+
+        do {
             System.out.print("Comuna Cliente (max 50 caracteres): ");
-            String comuna = scanner.nextLine();
+            comuna = scanner.nextLine();
+        } while (comuna.length() == 0 || comuna.length() > 50);
+
+        do {
             System.out.print("Edad Cliente (>=0 y <150): ");
-            int edad = scanner.nextInt();
+            while (!scanner.hasNextInt()) {
+                System.out.println("Debe ingresar una edad válida.");
+                scanner.next();
+            }
+            edad = scanner.nextInt();
             scanner.nextLine();
+        } while (edad < 0 || edad >= 150);
 
-            Cliente cliente = new Cliente(nombre, fechaNacimiento, run, rut,
-                    apellidos, telefono, afp, sistemaSalud, direccion,
-                    comuna, edad);
-            contenedor.almacenarCliente(cliente);
+        Cliente cliente = new Cliente(nombre, fechaNacimiento, run, rut, apellidos, telefono, afp, sistemaSalud,
+                direccion, comuna, edad);
 
-        } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
-                    + "ingresar numeros para RUN, RUT, sistema de salud y "
-                    + "edad.");
-            scanner.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error de validacion: " + e.getMessage());
-        }
+        contenedor.almacenarCliente(cliente);
     }
 
     private void almacenarProfesional() {
