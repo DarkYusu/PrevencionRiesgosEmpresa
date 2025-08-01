@@ -37,85 +37,92 @@ public class Accidente {
         return identificadorAccidente;
     }
 
-    public void setIdentificadorAccidente(int identificadorAccidente) {
+    public boolean setIdentificadorAccidente(int identificadorAccidente) {
         if (identificadorAccidente <= 0) {
-            throw new IllegalArgumentException("El identificador del accidente "
-                    + "es obligatorio y debe ser un numero positivo.");
+            return false;
+        } else {
+            this.identificadorAccidente = identificadorAccidente;
+            return true;
         }
-        this.identificadorAccidente = identificadorAccidente;
     }
 
     public int getRutCliente() {
         return rutCliente;
     }
 
-    public void setRutCliente(int rutCliente) {
+    public boolean setRutCliente(int rutCliente) {
         if (rutCliente <= 0) {
-            throw new IllegalArgumentException("El RUT del cliente es "
-                    + "obligatorio.");
+            return false;
+        } else {
+            this.rutCliente = rutCliente;
+            return false;
         }
-        this.rutCliente = rutCliente;
     }
 
     public String getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public boolean setDia(String dia) {
         if (!ValidadorFechaHora.isValidarFecha(dia)) {
-            throw new IllegalArgumentException("El dia del accidente es "
-                    + "obligatorio y debe tener el formato DD/MM/AAAA.");
+            return false;
+        } else {
+            this.dia = dia;
+            return true;
         }
-        this.dia = dia;
     }
 
     public String getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public boolean setHora(String hora) {
         if (!ValidadorFechaHora.isValidarHora(hora)) {
-            throw new IllegalArgumentException("La hora del accidente es "
-                    + "obligatoria y debe tener el formato HH:MM.");
+            return false;
+        } else {
+            this.hora = hora;
+            return true;
         }
-        this.hora = hora;
     }
 
     public String getLugar() {
         return lugar;
     }
 
-    public void setLugar(String lugar) {
+    public boolean setLugar(String lugar) {
         if (lugar == null || lugar.trim().length() < 10
                 || lugar.trim().length() > 50) {
-            throw new IllegalArgumentException("El lugar del accidente es "
-                    + "obligatorio y debe tener entre 10 y 50 caracteres.");
+            return false;
+        } else {
+            this.lugar = lugar;
+            return true;
         }
-        this.lugar = lugar;
     }
 
     public String getOrigen() {
         return origen;
     }
 
-    public void setOrigen(String origen) {
+    public boolean setOrigen(String origen) {
         if (origen != null && origen.trim().length() > 100) {
-            throw new IllegalArgumentException("El origen no puede exceder los "
-                    + "100 caracteres.");
+            return false;
+        } else {
+            this.origen = origen;
+            return true;
         }
-        this.origen = origen;
     }
 
     public String getConsecuencias() {
         return consecuencias;
     }
 
-    public void setConsecuencias(String consecuencias) {
+    public boolean setConsecuencias(String consecuencias) {
         if (consecuencias != null && consecuencias.trim().length() > 100) {
-            throw new IllegalArgumentException("Las consecuencias no pueden "
-                    + "exceder los 100 caracteres.");
+            return false;
+        } else {
+            this.consecuencias = consecuencias;
+            return true;
         }
-        this.consecuencias = consecuencias;
     }
 
     @Override
