@@ -24,22 +24,36 @@ public class Menu {
     public void mostrar() {
         int opcion;
         do {
-            System.out.println("\n--- Menu Principal ---");
-            System.out.println("1. Gestionar Usuarios");
-            System.out.println("2. Gestionar Capacitaciones");
-            System.out.println("3. Gestionar Eventos (Accidentes, Visitas,"
-                    + " Revisiones)");
-            System.out.println("9. Salir");
+            System.out.println("----MENU PRINCIPAL----");
+            System.out.println("[1] Almacenar cliente");
+            System.out.println("[2] Almacenar profesional");
+            System.out.println("[3] Almacenar administrativo");
+            System.out.println("[4] Almacenar capacitacion");
+            System.out.println("[5] Eliminar usuario");
+            System.out.println("[6] Listar todos los usuarios");
+            System.out.println("[7] Listar usuarios por tipo"); // cliente, admin o profesional
+            System.out.println("[8] Listar capacitacion");
+            System.out.println("[9] Salir del programa");
             System.out.print("Ingrese una opcion: ");
             opcion = obtenerOpcion();
 
             switch (opcion) {
                 case 1 ->
-                    mostrarMenuGestionUsuarios();
+                    almacenarCliente();
                 case 2 ->
-                    mostrarMenuGestionCapacitaciones();
+                    almacenarProfesional();
                 case 3 ->
-                    mostrarMenuGestionEventos();
+                    almacenarAdministrativo();
+                case 4 ->
+                    almacenarCapacitacion();
+                case 5 ->
+                    eliminarUsuario();
+                case 6 ->
+                    listarUsuarios();
+                case 7 ->
+                    listarUsuariosPorTipo();
+                case 8 ->
+                    listarCapacitaciones();
                 case 9 ->
                     System.out.println("Saliendo del sistema...");
                 default ->
@@ -59,42 +73,6 @@ public class Menu {
         } finally {
             scanner.nextLine();
         }
-    }
-
-    // --- Métodos para Gestión de Usuarios ---
-    private void mostrarMenuGestionUsuarios() {
-        int opcion;
-        do {
-            System.out.println("\n--- Menu Gestion de Usuarios ---");
-            System.out.println("1. Almacenar Cliente");
-            System.out.println("2. Almacenar Profesional");
-            System.out.println("3. Almacenar Administrativo");
-            System.out.println("4. Eliminar Usuario");
-            System.out.println("5. Listar Usuarios");
-            System.out.println("6. Listar Usuarios por Tipo");
-            System.out.println("7. Volver al Menu Principal");
-            System.out.print("Ingrese una opcion: ");
-            opcion = obtenerOpcion();
-
-            switch (opcion) {
-                case 1 ->
-                    almacenarCliente();
-                case 2 ->
-                    almacenarProfesional();
-                case 3 ->
-                    almacenarAdministrativo();
-                case 4 ->
-                    eliminarUsuario();
-                case 5 ->
-                    listarUsuarios();
-                case 6 ->
-                    listarUsuariosPorTipo();
-                case 7 ->
-                    System.out.println("Volviendo al Menu Principal...");
-                default ->
-                    System.out.println("Opcion invalida.");
-            }
-        } while (opcion != 7);
     }
 
     private void almacenarCliente() {
@@ -226,29 +204,6 @@ public class Menu {
     }
 
     // --- Métodos para Gestión de Capacitaciones ---
-    private void mostrarMenuGestionCapacitaciones() {
-        int opcion;
-        do {
-            System.out.println("\n--- Menu Gestion de Capacitaciones ---");
-            System.out.println("1. Almacenar Capacitacion");
-            System.out.println("2. Listar Capacitaciones");
-            System.out.println("3. Volver al Menu Principal");
-            System.out.print("Ingrese una opcion: ");
-            opcion = obtenerOpcion();
-
-            switch (opcion) {
-                case 1 ->
-                    almacenarCapacitacion();
-                case 2 ->
-                    listarCapacitaciones();
-                case 3 ->
-                    System.out.println("Volviendo al Menu Principal...");
-                default ->
-                    System.out.println("Opcion invalida.");
-            }
-        } while (opcion != 3);
-    }
-
     private void almacenarCapacitacion() {
         try {
             System.out.print("Identificador Capacitacion (positivo): ");
@@ -286,132 +241,4 @@ public class Menu {
         contenedor.listarCapacitaciones();
     }
 
-    // --- Métodos para Gestión de Eventos (Accidentes, Visitas, Revisiones) ---
-    private void mostrarMenuGestionEventos() {
-        int opcion;
-        do {
-            System.out.println("\n--- Menu Gestion de Eventos ---");
-            System.out.println("1. Almacenar Accidente");
-            System.out.println("2. Almacenar Visita en Terreno");
-            System.out.println("3. Almacenar Revision");
-            System.out.println("4. Listar Accidentes");
-            System.out.println("5. Listar Visitas en Terreno");
-            System.out.println("6. Listar Revisiones");
-            System.out.println("7. Volver al Menu Principal");
-            System.out.print("Ingrese una opcion: ");
-            opcion = obtenerOpcion();
-
-            switch (opcion) {
-                case 1 ->
-                    almacenarAccidente();
-                case 2 ->
-                    almacenarVisitaEnTerreno();
-                case 3 ->
-                    almacenarRevision();
-                case 4 ->
-                    contenedor.listarAccidentes();
-                case 5 ->
-                    contenedor.listarVisitasEnTerreno();
-                case 6 ->
-                    contenedor.listarRevisiones();
-                case 7 ->
-                    System.out.println("Volviendo al Menu Principal...");
-                default ->
-                    System.out.println("Opcion invalida.");
-            }
-        } while (opcion != 7);
-    }
-
-    private void almacenarAccidente() {
-        try {
-            System.out.print("Identificador Accidente (positivo): ");
-            int idAccidente = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("RUT Cliente asociado (sin puntos ni guion): ");
-            int rutCliente = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Día del accidente (DD/MM/AAAA): ");
-            String dia = scanner.nextLine();
-            System.out.print("Hora del accidente (HH:MM): ");
-            String hora = scanner.nextLine();
-            System.out.print("Lugar del accidente (10-50 caracteres): ");
-            String lugar = scanner.nextLine();
-            System.out.print("Origen del accidente (max 100 caracteres): ");
-            String origen = scanner.nextLine();
-            System.out.print("Consecuencias del accidente "
-                    + "(max 100 caracteres): ");
-            String consecuencias = scanner.nextLine();
-
-            Accidente accidente = new Accidente(idAccidente, rutCliente, dia,
-                    hora, lugar, origen, consecuencias);
-            contenedor.almacenarAccidente(accidente);
-
-        } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
-                    + "ingresar numeros para identificadores y RUT.");
-            scanner.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error de validacion: " + e.getMessage());
-        }
-    }
-
-    private void almacenarVisitaEnTerreno() {
-        try {
-            System.out.print("Identificador Visita en Terreno (positivo): ");
-            int idVisita = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("RUT Cliente asociado (sin puntos ni guion): ");
-            int rutCliente = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Día de la visita (DD/MM/AAAA): ");
-            String dia = scanner.nextLine();
-            System.out.print("Hora de la visita (HH:MM): ");
-            String hora = scanner.nextLine();
-            System.out.print("Lugar de la visita (10-50 caracteres): ");
-            String lugar = scanner.nextLine();
-            System.out.print("Comentarios de la visita (max 100 caracteres): ");
-            String comentarios = scanner.nextLine();
-
-            VisitaEnTerreno visita = new VisitaEnTerreno(idVisita, rutCliente,
-                    dia, hora, lugar, comentarios);
-            contenedor.almacenarVisitaEnTerreno(visita);
-
-        } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
-                    + "ingresar numeros para identificadores y RUT.");
-            scanner.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error de validacion: " + e.getMessage());
-        }
-    }
-
-    private void almacenarRevision() {
-        try {
-            System.out.print("Identificador Revision (positivo): ");
-            int idRevision = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Identificador Visita en Terreno asociada: ");
-            int idVisitaTerreno = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Nombre alusivo de la revisión (10-50 caracteres): ");
-            String nombreAlusivo = scanner.nextLine();
-            System.out.print("Detalle para revisar (max 100 caracteres): ");
-            String detalle = scanner.nextLine();
-            System.out.print("Estado de la revisión (1:Sin problemas, 2:Con "
-                    + "observaciones, 3:No aprueba): ");
-            int estado = scanner.nextInt();
-            scanner.nextLine();
-
-            Revision revision = new Revision(idRevision, idVisitaTerreno,
-                    nombreAlusivo, detalle, estado);
-            contenedor.almacenarRevision(revision);
-
-        } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
-                    + "ingresar numeros para identificadores y estado.");
-            scanner.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error de validacion: " + e.getMessage());
-        }
-    }
 }

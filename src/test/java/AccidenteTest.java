@@ -61,5 +61,4 @@ public class AccidenteTest {
         assertFalse(result);
         assertEquals("Lugar Test Accidente", accidente.getLugar()); // Valor no debe cambiar
     }
-
 }
