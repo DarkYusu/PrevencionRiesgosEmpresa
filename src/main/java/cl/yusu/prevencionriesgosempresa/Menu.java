@@ -64,14 +64,14 @@ public class Menu {
     }
 
     private int obtenerOpcion() {
-        try {
-            return scanner.nextInt();
-        } catch (InputMismatchException e) {
+        if (scanner.hasNextInt()) {
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
+            return opcion;
+        } else {
             System.out.println("Entrada invalida. Por favor, ingrese un numero.");
             scanner.nextLine();
             return -1;
-        } finally {
-            scanner.nextLine();
         }
     }
 
@@ -88,8 +88,6 @@ public class Menu {
             System.out.print("RUT Cliente (sin puntos ni guion): ");
             int rut = scanner.nextInt();
             scanner.nextLine();
-            System.out.print("Nombres Cliente (5-30 caracteres): ");
-            String nombres = scanner.nextLine();
             System.out.print("Apellidos Cliente (5-30 caracteres): ");
             String apellidos = scanner.nextLine();
             System.out.print("Telefono Cliente (max 15 caracteres): ");
@@ -108,7 +106,7 @@ public class Menu {
             scanner.nextLine();
 
             Cliente cliente = new Cliente(nombre, fechaNacimiento, run, rut,
-                    nombres, apellidos, telefono, afp, sistemaSalud, direccion,
+                    apellidos, telefono, afp, sistemaSalud, direccion,
                     comuna, edad);
             contenedor.almacenarCliente(cliente);
 
@@ -177,9 +175,6 @@ public class Menu {
         }
         contenedor.almacenarProfesional(profesional);
     }
-
-
-
 
     private void almacenarAdministrativo() {
         try {

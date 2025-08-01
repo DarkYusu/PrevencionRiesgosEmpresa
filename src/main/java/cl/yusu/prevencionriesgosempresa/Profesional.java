@@ -28,34 +28,38 @@ public class Profesional extends Usuario {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
+    public boolean setTitulo(String titulo) {
+
         if (titulo == null || titulo.trim().length() < 10
                 || titulo.trim().length() > 50) {
-            throw new IllegalArgumentException("El titulo es obligatorio "
-                    + "y debe tener entre 10 y 50 caracteres.");
+            return false;
+        } else {
+            this.titulo = titulo;
+            return true;
         }
-        this.titulo = titulo;
+
     }
 
     public String getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(String fechaIngreso) {
+    public boolean setFechaIngreso(String fechaIngreso) {
         if (!ValidadorFechaHora.isValidarFecha(fechaIngreso)) {
-            throw new IllegalArgumentException("La fecha de ingreso es "
-                    + "obligatoria y debe tener el formato DD/MM/AAAA.");
+            return false;
+        } else {
+            this.fechaIngreso = fechaIngreso;
+            return true;
         }
-        this.fechaIngreso = fechaIngreso;
     }
 
     @Override
-    public void setRun(int run) {
-        System.out.println("Ingrese su rut sin el guion");
+    public boolean setRun(int run) {
         if (run >= 0 && run < 99999999) {
-            this.run = run;
+            return false;
         } else {
-            throw new IllegalArgumentException("Run debe ser menor que 99999999");
+            this.run = run;
+            return true;
         }
     }
 

@@ -27,36 +27,40 @@ public class Usuario implements Asesoria {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public boolean setNombre(String nombre) {
         if (nombre == null || nombre.trim().length() < 10
                 || nombre.trim().length() > 50) {
-            throw new IllegalArgumentException("El nombre es obligatorio y debe tener entre 10 y 50 caracteres.");
+            return false;
+        } else {
+            this.nombre = nombre;
+            return true;
         }
-        this.nombre = nombre;
     }
 
     public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public boolean setFechaNacimiento(String fechaNacimiento) {
         if (!ValidadorFechaHora.isValidarFecha(fechaNacimiento)) {
-            throw new IllegalArgumentException("La fecha de nacimiento"
-                    + "es obligatoria y debe tener el formato DD/MM/AAAA.");
+            return false;
+        } else {
+            this.fechaNacimiento = fechaNacimiento;
+            return true;
         }
-        this.fechaNacimiento = fechaNacimiento;
     }
 
     public int getRun() {
         return run;
     }
 
-    public void setRun(int run) {
-        if (run < 0 || run >= 99999999) {
-            throw new IllegalArgumentException("El RUN debe ser un numero"
-                    + " positivo menor a 99.999.999.");
+    public boolean setRun(int run) {
+        if (run >= 0 && run < 99999999) {
+            return false;
+        } else {
+            this.run = run;
+            return true;
         }
-        this.run = run;
     }
 
     @Override
