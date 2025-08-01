@@ -151,7 +151,6 @@ public class Contenedor {
                     Cliente cliente = (Cliente) asesoria;
                     if (cliente.getRut() == cap.getRutCliente()) {
                         clienteAsociado = cliente;
-                        break;
                     }
                 }
             }
@@ -198,96 +197,7 @@ public class Contenedor {
         }
     }
 
-    public void listarAccidentes() {
-        if (listaAccidentes.isEmpty()) {
-            System.out.println("No hay accidentes registrados.");
-            return;
-        }
-        System.out.println("\n--- Listado de Accidentes ---");
-        for (Accidente acc : listaAccidentes) {
-            System.out.println(acc.toString());
-            Cliente clienteAsociado = null;
-            for (Asesoria asesoria : listaAsesoria) {
-                if (asesoria instanceof Cliente) {
-                    Cliente cliente = (Cliente) asesoria;
-                    if (cliente.getRut() == acc.getRutCliente()) {
-                        clienteAsociado = cliente;
-                        break;
-                    }
-                }
-            }
-            if (clienteAsociado != null) {
-                System.out.println("  Asociado al Cliente: "
-                        + clienteAsociado.obtenerNombre()
-                        + " (RUT: " + clienteAsociado.getRut() + ")");
-            } else {
-                System.out.println("  Cliente asociado no encontrado (RUT: "
-                        + acc.getRutCliente() + ")");
-            }
-            System.out.println("---");
-        }
-        System.out.println("----------------------------------------");
-    }
 
-    public void listarVisitasEnTerreno() {
-        if (listaVisitasEnTerreno.isEmpty()) {
-            System.out.println("No hay visitas en terreno registradas.");
-            return;
-        }
-        System.out.println("\n--- Listado de Visitas en Terreno ---");
-        for (VisitaEnTerreno vis : listaVisitasEnTerreno) {
-            System.out.println(vis.toString());
-            Cliente clienteAsociado = null;
-            for (Asesoria asesoria : listaAsesoria) {
-                if (asesoria instanceof Cliente) {
-                    Cliente cliente = (Cliente) asesoria;
-                    if (cliente.getRut() == vis.getRutCliente()) {
-                        clienteAsociado = cliente;
-                        break;
-                    }
-                }
-            }
-            if (clienteAsociado != null) {
-                System.out.println("  Asociada al Cliente: "
-                        + clienteAsociado.obtenerNombre()
-                        + " (RUT: " + clienteAsociado.getRut() + ")");
-            } else {
-                System.out.println("  Cliente asociado no encontrado (RUT: "
-                        + vis.getRutCliente() + ")");
-            }
-            System.out.println("---");
-        }
-        System.out.println("----------------------------------------");
-    }
-
-    public void listarRevisiones() {
-        if (listaRevisiones.isEmpty()) {
-            System.out.println("No hay revisiones registradas.");
-            return;
-        }
-        System.out.println("\n--- Listado de Revisiones ---");
-        for (Revision rev : listaRevisiones) {
-            System.out.println(rev.toString());
-            VisitaEnTerreno visitaAsociada = null;
-            for (VisitaEnTerreno vis : listaVisitasEnTerreno) {
-                if (vis.getIdentificadorVisitaTerreno() == rev.getIdentificadorVisitaTerreno()) {
-                    visitaAsociada = vis;
-                    break;
-                }
-            }
-            if (visitaAsociada != null) {
-                System.out.println("  Asociada a la Visita en Terreno ID: "
-                        + visitaAsociada.getIdentificadorVisitaTerreno()
-                        + " (Cliente RUT: " + visitaAsociada.getRutCliente()
-                        + ")");
-            } else {
-                System.out.println("  Visita en Terreno asociada no encontrada "
-                        + "(ID: " + rev.getIdentificadorVisitaTerreno() + ")");
-            }
-            System.out.println("---");
-        }
-        System.out.println("----------------------------------------");
-    }
 
     public static Contenedor crearContenedorConDatosDePrueba() {
         Contenedor contenedor = new Contenedor();
