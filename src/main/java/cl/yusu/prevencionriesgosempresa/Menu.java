@@ -82,7 +82,7 @@ public class Menu {
         do {
             System.out.print("Nombre (10-50 caracteres): ");
             nombre = scanner.nextLine();
-            
+
         } while (nombre.length() < 10 || nombre.length() > 50);
 
         do {
@@ -218,43 +218,53 @@ public class Menu {
     }
 
     private void almacenarAdministrativo() {
-        try {
+        String nombre, fechaNacimiento, area, experienciaPrevia;
+        int run;
+
+        do {
             System.out.print("Nombre (10-50 caracteres): ");
-            String nombre = scanner.nextLine();
+            nombre = scanner.nextLine();
+        } while (nombre.length() < 10 || nombre.length() > 50);
+
+        do {
             System.out.print("Fecha Nacimiento (DD/MM/AAAA): ");
-            String fechaNacimiento = scanner.nextLine();
-            System.out.print("RUN (sin puntos ni guion, < 99.999.999): ");
-            int run = scanner.nextInt();
-            scanner.nextLine();
+            fechaNacimiento = scanner.nextLine();
+        } while (!ValidadorFechaHora.isValidarFecha(fechaNacimiento));
 
+        do {
+            System.out.print("RUN (sin puntos ni guion, < 99999999): ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Debe ingresar un número válido.");
+                scanner.next();
+            }
+            run = scanner.nextInt();
+            scanner.nextLine();
+        } while (run <= 0 || run >= 99999999);
+
+        do {
             System.out.print("Area (5-20 caracteres): ");
-            String area = scanner.nextLine();
+            area = scanner.nextLine();
+        } while (area.length() < 5 || area.length() > 20);
+
+        do {
             System.out.print("Experiencia Previa (max 100 caracteres): ");
-            String experienciaPrevia = scanner.nextLine();
+            experienciaPrevia = scanner.nextLine();
+        } while (experienciaPrevia.length() == 0 || experienciaPrevia.length() > 100);
 
-            Administrativo administrativo = new Administrativo(nombre,
-                    fechaNacimiento, run,
-                    area, experienciaPrevia);
-            contenedor.almacenarAdministrativo(administrativo);
-
-        } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
-                    + "ingresar numeros para RUN.");
-            scanner.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error de validacion: " + e.getMessage());
-        }
+        Administrativo administrativo = new Administrativo(nombre,
+                fechaNacimiento, run, area, experienciaPrevia);
+        contenedor.almacenarAdministrativo(administrativo);
     }
 
     private void eliminarUsuario() {
-        try {
-            System.out.print("RUN del usuario a eliminar: ");
-            int run = scanner.nextInt();
-            scanner.nextLine();
+        System.out.print("RUN del usuario a eliminar: ");
+        String input = scanner.nextLine();
+
+        if (input.matches("\\d+")) {
+            int run = Integer.parseInt(input);
             contenedor.eliminarUsuario(run);
-        } catch (InputMismatchException e) {
-            System.out.println("Error: debe ingresar un numero para el RUN.");
-            scanner.nextLine();
+        } else {
+            System.out.println("Error: debe ingresar un número válido para el RUN.");
         }
     }
 

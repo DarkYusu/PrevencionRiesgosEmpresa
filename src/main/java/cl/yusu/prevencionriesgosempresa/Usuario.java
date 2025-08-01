@@ -56,20 +56,11 @@ public class Usuario implements Asesoria {
 
     public boolean setRun(int run) {
         if (run >= 0 && run < 99999999) {
-            return false;
-        } else {
             this.run = run;
             return true;
+        } else {
+            return false;
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{"
-                + "nombre='" + nombre + '\''
-                + ", fechaNacimiento='" + fechaNacimiento + '\''
-                + ", run=" + run
-                + '}';
     }
 
     public String mostrarEdad() {
@@ -87,6 +78,15 @@ public class Usuario implements Asesoria {
             return "No se puede calcular la edad debido a un formato de fecha "
                     + "invalido.";
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{"
+                + "nombre='" + nombre + '\''
+                + ", fechaNacimiento='" + fechaNacimiento + '\''
+                + ", run=" + run
+                + '}';
     }
 
     @Override
