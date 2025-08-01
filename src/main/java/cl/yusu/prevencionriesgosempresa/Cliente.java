@@ -8,6 +8,7 @@ package cl.yusu.prevencionriesgosempresa;
  *
  * @author anton
  */
+
 public class Cliente extends Usuario {
 
     private int rut;
@@ -44,109 +45,117 @@ public class Cliente extends Usuario {
         return rut;
     }
 
-    public void setRut(int rut) {
-        if (rut < 0 || rut >= 99999999) {
-            throw new IllegalArgumentException("El RUT debe ser un numero positivo menor a 99.999.999.");
+    public boolean setRut(int rut) {
+        if (rut > 0 && rut <= 99999999) {
+            this.rut = rut;
+            return true;
+        } else {
+            return false;
         }
-        this.rut = rut;
     }
 
     public String getNombres() {
         return nombres;
     }
 
-    public void setNombres(String nombres) {
-        if (nombres == null || nombres.trim().length() < 5
-                || nombres.trim().length() > 30) {
-            throw new IllegalArgumentException("Los nombres son obligatorios y"
-                    + " deben tener entre 5 y 30 caracteres.");
+    public boolean setNombres(String nombres) {
+        if (nombres == null || nombres.trim().length() < 5 || nombres.trim().length() > 30) {
+            return false;
+        } else {
+            this.nombres = nombres.trim();
+            return true;
         }
-        this.nombres = nombres;
     }
 
     public String getApellidos() {
         return apellidos;
     }
 
-    public void setApellidos(String apellidos) {
-        if (apellidos == null || apellidos.trim().length() < 5
-                || apellidos.trim().length() > 30) {
-            throw new IllegalArgumentException("Los apellidos son obligatorios "
-                    + "y deben tener entre 5 y 30 caracteres.");
+    public boolean setApellidos(String apellidos) {
+        if (apellidos != null && apellidos.trim().length() >= 5 && apellidos.trim().length() <= 30) {
+            this.apellidos = apellidos.trim();
+            return true;
+        } else {
+            return false;
         }
-        this.apellidos = apellidos;
     }
 
     public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public boolean setTelefono(String telefono) {
         if (telefono == null || telefono.trim().isEmpty()) {
-            throw new IllegalArgumentException("El teléfono es obligatorio.");
+            return false;
+        } else {
+            this.telefono = telefono.trim();
+            return true;
         }
-        this.telefono = telefono;
     }
 
     public String getAfp() {
         return afp;
     }
 
-    public void setAfp(String afp) {
-        if (afp == null || afp.trim().length() < 4
-                || afp.trim().length() > 30) {
-            throw new IllegalArgumentException("La AFP debe tener entre 4 y 30 "
-                    + "caracteres.");
+    public boolean setAfp(String afp) {
+        if (afp == null || afp.trim().length() < 4 || afp.trim().length() > 30) {
+            return false;
+        } else {
+            this.afp = afp.trim();
+            return true;
         }
-        this.afp = afp;
     }
 
     public int getSistemaSalud() {
         return sistemaSalud;
     }
 
-    public void setSistemaSalud(int sistemaSalud) {
-        if (sistemaSalud != 1 && sistemaSalud != 2) {
-            throw new IllegalArgumentException("El sistema de salud debe ser 1 "
-                    + "(Fonasa) o 2 (Isapre).");
+    public boolean setSistemaSalud(int sistemaSalud) {
+        if (sistemaSalud == 1 || sistemaSalud == 2) {
+            this.sistemaSalud = sistemaSalud;
+            return true;
+        } else {
+            return false;
         }
-        this.sistemaSalud = sistemaSalud;
     }
 
     public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        if (direccion != null && direccion.trim().length() > 70) {
-            throw new IllegalArgumentException("La dirección no puede exceder "
-                    + "los 70 caracteres.");
+    public boolean setDireccion(String direccion) {
+        if (direccion == null || direccion.trim().length() > 70) {
+            return false;
+        } else {
+            this.direccion = direccion.trim();
+            return true;
         }
-        this.direccion = direccion;
     }
 
     public String getComuna() {
         return comuna;
     }
 
-    public void setComuna(String comuna) {
-        if (comuna != null && comuna.trim().length() > 50) {
-            throw new IllegalArgumentException("La comuna no puede exceder los "
-                    + "50 caracteres.");
+    public boolean setComuna(String comuna) {
+        if (comuna == null || comuna.trim().length() > 50) {
+            return false;
+        } else {
+            this.comuna = comuna.trim();
+            return true;
         }
-        this.comuna = comuna;
     }
 
     public int getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public boolean setEdad(int edad) {
         if (edad < 0 || edad >= 150) {
-            throw new IllegalArgumentException("La edad es obligatoria y debe "
-                    + "ser mayor o igual a cero y menor a 150.");
+            return false;
+        } else {
+            this.edad = edad;
+            return true;
         }
-        this.edad = edad;
     }
 
     @Override

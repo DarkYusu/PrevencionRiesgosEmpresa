@@ -4,8 +4,6 @@
  */
 package cl.yusu.prevencionriesgosempresa;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,41 +17,73 @@ public class ValidadorFechaHora {
             "lunes", "martes", "miercoles", "jueves", "viernes", "sabado",
             "domingo");
 
+    public static boolean isValidarDiaSemana(String dia) {
+        if (dia == null || dia.trim().isEmpty()) {
+            return false;
+        }
+        return DIAS_SEMANA_VALIDOS.contains(dia.toLowerCase());
+    }
+
     public static boolean isValidarFecha(String fecha) {
         if (fecha == null || fecha.trim().isEmpty()) {
             return false;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf.setLenient(false);
-        try {
-            sdf.parse(fecha);
-            return true;
-        } catch (ParseException e) {
+        // Verificar formato correcto (dd/MM/yyyy)
+        if (!fecha.matches("\\d{2}/\\d{2}/\\d{4}")) {
             return false;
         }
+        String[] partes = fecha.split("/");
+        int dia = Integer.parseInt(partes[0]);
+        int mes = Integer.parseInt(partes[1]);
+        int anio = Integer.parseInt(partes[2]);
+        // Validar rango de año
+        if (anio < 1900) {
+            return false;
+        }
+        // Validar rango de mes
+        if (mes < 1 || mes > 12) {
+            return false;
+        }
+        int[] diasPorMes = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        if (esAnioBisiesto(anio)) {
+            diasPorMes[1] = 29; // Febrero tiene 29 días en años bisiestos
+        }
+
+        if (dia < 1 || dia > diasPorMes[mes - 1]) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean esAnioBisiesto(int anio) {
+        return (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
     }
 
     public static boolean isValidarHora(String hora) {
         if (hora == null || hora.trim().isEmpty()) {
             return false;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        sdf.setLenient(false);
-        try {
-            sdf.parse(hora);
-            String[] partes = hora.split(":");
-            int horas = Integer.parseInt(partes[0]);
-            int minutos = Integer.parseInt(partes[1]);
-            return horas >= 0 && horas <= 23 && minutos >= 0 && minutos <= 59;
-        } catch (ParseException | NumberFormatException e) {
-            return false;
-        }
-    }
 
-    public static boolean isValidarDiaSemana(String dia) {
-        if (dia == null || dia.trim().isEmpty()) {
+        // Verificar formato correcto (HH:mm)
+        if (!hora.matches("\\d{2}:\\d{2}")) {
             return false;
         }
-        return DIAS_SEMANA_VALIDOS.contains(dia.toLowerCase());
+
+        String[] partes = hora.split(":");
+        int horas = Integer.parseInt(partes[0]);
+        int minutos = Integer.parseInt(partes[1]);
+
+        // Validar rango de horas (0-23)
+        if (horas < 0 || horas > 23) {
+            return false;
+        }
+
+        // Validar rango de minutos (0-59)
+        if (minutos < 0 || minutos > 59) {
+            return false;
+        }
+
+        return true;
     }
 }

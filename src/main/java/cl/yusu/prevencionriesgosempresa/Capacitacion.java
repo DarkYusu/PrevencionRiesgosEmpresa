@@ -38,86 +38,83 @@ public class Capacitacion {
     }
 
     public void setIdentificador(int identificador) {
-        if (identificador <= 0) {
-            throw new IllegalArgumentException("El identificador de la "
-                    + "capacitacion es obligatorio y debe ser un "
-                    + "numero positivo.");
+        if (identificador > 0) {
+            this.identificador = identificador;
+        } else {
+            System.out.println("Error: El identificador debe ser un número positivo.");
         }
-        this.identificador = identificador;
     }
 
     public int getRutCliente() {
         return rutCliente;
     }
 
-    public void setRutCliente(int rutCliente) {
-        if (rutCliente <= 0) {
-            throw new IllegalArgumentException("El RUT del cliente es "
-                    + "obligatorio.");
+    public boolean setRutCliente(int rutCliente) {
+        if (rutCliente > 0) {
+            this.rutCliente = rutCliente;
+            return true;
         }
-        this.rutCliente = rutCliente;
+        return false; // RUT inválido
     }
 
     public String getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
-        if (!ValidadorFechaHora.isValidarDiaSemana(dia)) {
-            throw new IllegalArgumentException("El día debe ser un valor "
-                    + "valido entre 'lunes' y 'domingo'.");
+    public boolean setDia(String dia) {
+        if (ValidadorFechaHora.isValidarDiaSemana(dia)) {
+            this.dia = dia;
+            return true;
         }
-        this.dia = dia;
+        return false; // Día inválido
     }
 
     public String getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
-        if (!ValidadorFechaHora.isValidarHora(hora)) {
-            throw new IllegalArgumentException("La hora es obligatoria y debe "
-                    + "tener el formato HH:MM.");
+    public boolean setHora(String hora) {
+        if (ValidadorFechaHora.isValidarHora(hora)) {
+            this.hora = hora;
+            return true;
         }
-        this.hora = hora;
+        return false; // Hora inválida
     }
 
     public String getLugar() {
         return lugar;
     }
 
-    public void setLugar(String lugar) {
-        if (lugar == null || lugar.trim().length() < 10
-                || lugar.trim().length() > 50) {
-            throw new IllegalArgumentException("El lugar es obligatorio y "
-                    + "debe tener entre 10 y 50 caracteres.");
+    public boolean setLugar(String lugar) {
+        if (lugar != null && lugar.trim().length() >= 10 && lugar.trim().length() <= 50) {
+            this.lugar = lugar;
+            return true;
         }
-        this.lugar = lugar;
+        return false; // Lugar inválido
     }
 
     public int getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
-        if (duracion <= 0 || duracion > 70) {
-            throw new IllegalArgumentException("La duración de la capacitación "
-                    + "debe ser un número entre 1 y 70 minutos.");
+    public boolean setDuracion(int duracion) {
+        if (duracion > 0 && duracion <= 70) {
+            this.duracion = duracion;
+            return true;
         }
-        this.duracion = duracion;
+        return false; // Duración inválida
     }
 
     public int getCantidadAsistentes() {
         return cantidadAsistentes;
     }
 
-    public void setCantidadAsistentes(int cantidadAsistentes) {
-        if (cantidadAsistentes <= 0 || cantidadAsistentes >= 1000) {
-            throw new IllegalArgumentException("La cantidad de asistentes "
-                    + "es obligatoria y debe ser un número entero mayor que"
-                    + " 0 y menor que 1000.");
+    public boolean setCantidadAsistentes(int cantidadAsistentes) {
+        if (cantidadAsistentes > 0 && cantidadAsistentes < 1000) {
+            this.cantidadAsistentes = cantidadAsistentes;
+            return true;
         }
-        this.cantidadAsistentes = cantidadAsistentes;
+        return false; // Cantidad de asistentes inválida
     }
 
     @Override

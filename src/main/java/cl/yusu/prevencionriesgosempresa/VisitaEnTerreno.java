@@ -35,75 +35,72 @@ public class VisitaEnTerreno {
         return identificadorVisitaTerreno;
     }
 
-    public void setIdentificadorVisitaTerreno(int identificadorVisitaTerreno) {
+    public boolean setIdentificadorVisitaTerreno(int identificadorVisitaTerreno) {
         if (identificadorVisitaTerreno <= 0) {
-            throw new IllegalArgumentException("El identificador de la visita "
-                    + "en terreno es obligatorio y debe ser un numero"
-                    + " positivo.");
+            return false;
         }
         this.identificadorVisitaTerreno = identificadorVisitaTerreno;
+        return true;
     }
 
     public int getRutCliente() {
         return rutCliente;
     }
 
-    public void setRutCliente(int rutCliente) {
+    public boolean setRutCliente(int rutCliente) {
         if (rutCliente <= 0) {
-            throw new IllegalArgumentException("El RUT del cliente es "
-                    + "obligatorio.");
+            return false;
         }
         this.rutCliente = rutCliente;
+        return true;
     }
 
     public String getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public boolean setDia(String dia) {
         if (!ValidadorFechaHora.isValidarFecha(dia)) {
-            throw new IllegalArgumentException("El dia de la visita en terreno "
-                    + "es obligatorio y debe tener el formato DD/MM/AAAA.");
+            return false;
         }
         this.dia = dia;
+        return true;
     }
 
     public String getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public boolean setHora(String hora) {
         if (!ValidadorFechaHora.isValidarHora(hora)) {
-            throw new IllegalArgumentException("La hora de la visita en "
-                    + "terreno es obligatoria y debe tener el formato HH:MM.");
+            return false;
         }
         this.hora = hora;
+        return true;
     }
 
     public String getLugar() {
         return lugar;
     }
 
-    public void setLugar(String lugar) {
-        if (lugar == null || lugar.trim().length() < 10 ||
-                lugar.trim().length() > 50) {
-            throw new IllegalArgumentException("El lugar de la visita en "
-                    + "terreno es obligatorio y debe tener entre 10 y 50"
-                    + " caracteres.");
+    public boolean setLugar(String lugar) {
+        if (lugar == null || lugar.trim().length() < 10 || lugar.trim().length() > 50) {
+            return false;
         }
         this.lugar = lugar;
+        return true;
     }
 
     public String getComentarios() {
         return comentarios;
     }
 
-    public void setComentarios(String comentarios) {
+    public boolean setComentarios(String comentarios) {
         if (comentarios != null && comentarios.trim().length() > 100) {
-            throw new IllegalArgumentException("Los comentarios no pueden "
-                    + "exceder los 100 caracteres.");
+            return false;
         }
         this.comentarios = comentarios;
+        return true;
     }
 
     @Override

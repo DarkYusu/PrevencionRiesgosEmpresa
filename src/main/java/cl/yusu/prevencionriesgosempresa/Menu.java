@@ -123,33 +123,63 @@ public class Menu {
     }
 
     private void almacenarProfesional() {
-        try {
+        Profesional profesional = new Profesional();
+
+        while (true) {
             System.out.print("Nombre (10-50 caracteres): ");
             String nombre = scanner.nextLine();
+            if (profesional.setNombre(nombre)) {
+                break;
+            } else {
+                System.out.println("Entrada invalida");
+            }
+        }
+
+        while (true) {
             System.out.print("Fecha Nacimiento (DD/MM/AAAA): ");
             String fechaNacimiento = scanner.nextLine();
+            if (profesional.setFechaNacimiento(fechaNacimiento)) {
+                break;
+            } else {
+                System.out.println("Entrada invalida");
+            }
+        }
+
+        while (true) {
             System.out.print("RUN (sin puntos ni guion, < 99.999.999): ");
             int run = scanner.nextInt();
             scanner.nextLine();
+            if (profesional.setRun(run)) {
+                break;
+            } else {
+                System.out.println("Entrada invalida");
+            }
+        }
 
+        while (true) {
             System.out.print("Titulo (10-50 caracteres): ");
             String titulo = scanner.nextLine();
+            if (profesional.setTitulo(titulo)) {
+                break;
+            } else {
+                System.out.println("Entrada invalida");
+            }
+        }
+
+        while (true) {
             System.out.print("Fecha de Ingreso (DD/MM/AAAA): ");
             String fechaIngreso = scanner.nextLine();
-
-            Profesional profesional = new Profesional(nombre, fechaNacimiento,
-                    run,
-                    titulo, fechaIngreso);
-            contenedor.almacenarProfesional(profesional);
-
-        } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegurese de "
-                    + "ingresar numeros para RUN.");
-            scanner.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error de validacion: " + e.getMessage());
+            if (profesional.setFechaIngreso(fechaIngreso)) {
+                break;
+            } else {
+                System.out.println("Entrada invalida");
+            }
         }
+        contenedor.almacenarProfesional(profesional);
     }
+
+
+
 
     private void almacenarAdministrativo() {
         try {
