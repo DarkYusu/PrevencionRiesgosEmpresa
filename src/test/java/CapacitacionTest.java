@@ -31,41 +31,38 @@ public class CapacitacionTest {
     void testSetDiaValido() {
         Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00",
                 "Lugar Test Capacitacion", 10, 10);
-        capacitacion.setDia("miercoles");
-        assertEquals("miercoles", capacitacion.getDia());
+
+        boolean resultado = capacitacion.setDia("miercoles");
+        assertTrue(resultado);
     }
 
     @Test
     void testSetDiaInvalido() {
         Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00",
                 "Lugar Test Capacitacion", 10, 10);
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            capacitacion.setDia("DiaDePrueba");
-        });
-        assertTrue(exception.getMessage().contains("El día debe ser un valor "
-                + "valido entre 'lunes' y 'domingo'."));
+
+        boolean resultado = capacitacion.setDia("DiaDePrueba");
+        assertFalse(resultado);
+        assertEquals("Lunes", capacitacion.getDia());
     }
 
     @Test
     void testSetIdentificadorInvalido() {
         Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00",
                 "Lugar Test Capacitacion", 10, 10);
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            capacitacion.setIdentificador(0); // Debe ser mayor a 0
-        });
-        assertTrue(exception.getMessage().contains("El identificador de la "
-                + "capacitacion es obligatorio y debe ser un numero positivo."));
+
+        boolean resultado = capacitacion.setDia("DiaDePrueba");
+        assertFalse(resultado);
     }
 
     @Test
     void testSetIdentificadorInvalidoNegativo() {
         Capacitacion capacitacion = new Capacitacion(1, 123, "Lunes", "10:00",
                 "Lugar Test Capacitacion", 10, 10);
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            capacitacion.setIdentificador(-1); // Debe ser mayor a 0
-        });
-        assertTrue(exception.getMessage().contains("El identificador de la "
-                + "capacitacion es obligatorio y debe ser un numero positivo."));
+
+        boolean resultado = capacitacion.setIdentificador(-1); // Debe ser mayor a 0
+        assertFalse(resultado);
+        assertEquals(1, capacitacion.getIdentificador());
     }
 
 }

@@ -49,8 +49,6 @@ public class ContenedorTest {
     void testListarUsuariosConDatos() throws NoSuchFieldException, IllegalAccessException {
         contenedor.almacenarCliente(new Cliente("Cliente Test List", "01/01/1990", 11111111, 12345678,  "ApellidoC1", "912345678", "AFP Prueba", 1, "Dir Prueba 1", "Comuna Prueba 1", 30));
         contenedor.almacenarProfesional(new Profesional("Profesional Test List", "02/02/1985", 22222222, "Ingenierodiez", "01/01/2010"));
-        
-        // El test solo verifica que el método se ejecuta sin excepciones
         assertDoesNotThrow(() -> contenedor.listarUsuarios(), "Listar usuarios con datos no debe lanzar excepción.");
     }
 

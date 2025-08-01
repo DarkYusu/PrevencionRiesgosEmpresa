@@ -31,6 +31,7 @@ public class AccidenteTest {
     void testSetIdentificadorAccidenteValido() {
         Accidente accidente = new Accidente(1, 123, "01/01/2023", "10:00", "Lugar Test Accidente", "Origen",
                 "Consecuencias");
+
         accidente.setIdentificadorAccidente(200);
         assertEquals(200, accidente.getIdentificadorAccidente());
     }
@@ -39,6 +40,7 @@ public class AccidenteTest {
     void testSetIdentificadorAccidenteInvalido() {
         Accidente accidente = new Accidente(1, 123, "01/01/2023", "10:00", "Lugar Test Accidente", "Origen",
                 "Consecuencias");
+
         boolean result = accidente.setIdentificadorAccidente(-5);
         assertFalse(result);
         assertEquals(1, accidente.getIdentificadorAccidente()); // Valor no debe cambiar
@@ -48,15 +50,17 @@ public class AccidenteTest {
     void testSetLugarValido() {
         Accidente accidente = new Accidente(1, 123, "01/01/2023", "10:00", "Lugar Test Accidente", "Origen",
                 "Consecuencias");
-        boolean result = accidente.setLugar("Lugar válido con más de 10 caracteres");
+
+        boolean result = accidente.setLugar("Lugar valido con más de 10 caracteres");
         assertTrue(result);
-        assertEquals("Lugar válido con más de 10 caracteres", accidente.getLugar());
+        assertEquals("Lugar valido con más de 10 caracteres", accidente.getLugar());
     }
 
     @Test
     void testSetLugarInvalido() {
         Accidente accidente = new Accidente(1, 123, "01/01/2023", "10:00", "Lugar Test Accidente", "Origen",
                 "Consecuencias");
+
         boolean result = accidente.setLugar("Corto");
         assertFalse(result);
         assertEquals("Lugar Test Accidente", accidente.getLugar()); // Valor no debe cambiar

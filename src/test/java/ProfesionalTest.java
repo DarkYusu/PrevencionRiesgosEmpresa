@@ -17,7 +17,9 @@ public class ProfesionalTest {
         void testSetTituloValido() {
                 Profesional profesional = new Profesional("NombreDeDiezCaracteres",
                                 "01/01/1990", 12345678, "TituloDeDiezCaracteres", "01/01/2015");
-                profesional.setTitulo("Medico Cirujano");
+
+                boolean resultado = profesional.setTitulo("Medico Cirujano");
+                assertTrue(resultado);
                 assertEquals("Medico Cirujano", profesional.getTitulo());
         }
 
@@ -25,24 +27,20 @@ public class ProfesionalTest {
         void testSetTituloInvalidoCorto() {
                 Profesional profesional = new Profesional("NombredeDiezCaracteres", "01/01/1990",
                                 12345678, "TitulodeDiezCaracteres", "01/01/2015");
-                Exception exception = assertThrows(IllegalArgumentException.class,
-                                () -> {
-                                        profesional.setTitulo("ABCD"); // Menos de 5 caracteres
-                                });
-                assertTrue(exception.getMessage().contains("El titulo es obligatorio "
-                                + "y debe tener entre 10 y 50 caracteres."));
+
+                boolean resultado = profesional.setTitulo("ABCD"); // Menos de 10 caracteres
+                assertFalse(resultado);
+                assertEquals("TitulodeDiezCaracteres", profesional.getTitulo());
         }
 
         @Test
         void testSetTituloInvalidoLargo() {
                 Profesional profesional = new Profesional("NombredeDiezCaracteres", "01/01/1990",
                                 12345678, "TitulodeDiezCaracteres", "01/01/2015");
-                Exception exception = assertThrows(IllegalArgumentException.class,
-                                () -> {
-                                        profesional.setTitulo("A".repeat(51)); // 51 caracteres
-                                });
-                assertTrue(exception.getMessage().contains("El titulo es obligatorio "
-                                + "y debe tener entre 10 y 50 caracteres."));
+
+                boolean resultado = profesional.setTitulo("A".repeat(51)); // 51 caracteres
+                assertFalse(resultado);
+                assertEquals("TitulodeDiezCaracteres", profesional.getTitulo());
         }
 
 }

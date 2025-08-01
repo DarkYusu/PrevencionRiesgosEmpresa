@@ -36,7 +36,9 @@ public class ClienteTest {
     void testSetRutValido() {
         Cliente cliente = new Cliente("EmpresaDeDiezCaracteres", "01/01/1990", 12345678, 11111111,
                 "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
-        cliente.setRut(22222222);
+
+        boolean resultado = cliente.setRut(22222222);
+        assertTrue(resultado);
         assertEquals(22222222, cliente.getRut());
     }
 
@@ -44,20 +46,20 @@ public class ClienteTest {
     void testSetRutInvalidoNegativo() {
         Cliente cliente = new Cliente("EmpresaDeDiezCaracteres", "01/01/1990", 12345678, 11111111,
                 "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            cliente.setRut(-1); // RUT inválido (negativo)
-        });
-        assertTrue(exception.getMessage().contains("El RUT debe ser un numero positivo menor a 99.999.999."));
+
+        boolean resultado = cliente.setRut(-1); // RUT inválido (negativo)
+        assertFalse(resultado);
+        assertEquals(11111111, cliente.getRut());
     }
 
     @Test
     void testSetRutInvalidoPositivo() {
         Cliente cliente = new Cliente("EmpresaDeDiezCaracteres", "01/01/1990", 12345678, 11111111,
                 "ApellidoDeDiezCaracteres", "912345678", "AFPdeCINCO", 1, "Dir", "Com", 30);
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            cliente.setRut(99999999); // RUN inválido (positivo, mayor a 99.999.99)
-        });
-        assertTrue(exception.getMessage().contains("El RUT debe ser un numero positivo menor a 99.999.999."));
+
+        boolean resultado = cliente.setRut(100000000); // RUN inválido (mayor a 99.999.999)
+        assertFalse(resultado);
+        assertEquals(11111111, cliente.getRut());
     }
 
 }

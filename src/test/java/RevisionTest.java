@@ -27,27 +27,27 @@ public class RevisionTest {
     @Test
     void testSetIdentificadorRevisionValido() {
         Revision rev = new Revision();
-        rev.setIdentificadorRevision(400);
+
+        boolean resultado = rev.setIdentificadorRevision(400);
+        assertTrue(resultado);
         assertEquals(400, rev.getIdentificadorRevision());
     }
 
     @Test
     void testSetIdentificadorRevisionInvalidoNegativo() {
         Revision rev = new Revision();
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            rev.setIdentificadorRevision(-1); // Inválido
-        });
-        assertTrue(exception.getMessage()
-                .contains("El identificador de la revision es obligatorio y debe ser un número positivo."));
+
+        boolean resultado = rev.setIdentificadorRevision(-1); // Inválido
+        assertFalse(resultado);
+        assertEquals(0, rev.getIdentificadorRevision());
     }
 
     @Test
     void testSetIdentificadorRevisionNulo() {
         Revision rev = new Revision();
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            rev.setIdentificadorRevision(-1); // Inválido
-        });
-        assertTrue(exception.getMessage()
-                .contains("El identificador de la revision es obligatorio y debe ser un número positivo."));
+
+        boolean resultado = rev.setIdentificadorRevision(-1); // Inválido
+        assertFalse(resultado);
+        assertEquals(0, rev.getIdentificadorRevision());
     }
 }

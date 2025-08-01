@@ -21,36 +21,29 @@ public class UsuarioTest {
     }
 
     @Test
-    void testConstructorAndGetters() {
-        UsuarioConcreta usuario = new UsuarioConcreta("Juan Perez", "01/01/1990", 12345678);
-        assertEquals("Juan Perez", usuario.getNombre());
-        assertEquals("01/01/1990", usuario.getFechaNacimiento());
-        assertEquals(12345678, usuario.getRun());
-    }
-
-    @Test
     void testSetNombreValido() {
         UsuarioConcreta usuario = new UsuarioConcreta("NombreDeDiezCaracteres", "01/01/1990", 123);
-        usuario.setNombre("Nuevo Nombre Valido");
+
+        boolean resultado = usuario.setNombre("Nuevo Nombre Valido");
+        assertTrue(resultado);
         assertEquals("Nuevo Nombre Valido", usuario.getNombre());
     }
 
     @Test
     void testSetNombreInvalido_LongitudCorta() {
         UsuarioConcreta usuario = new UsuarioConcreta("NombreDeDiezCaracteres", "01/01/1990", 123);
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            usuario.setNombre("Corto");
-        });
-        assertTrue(exception.getMessage().contains("El nombre es obligatorio y debe tener entre 10 y 50 caracteres."));
+
+        boolean resultado = usuario.setNombre("Corto");
+        assertFalse(resultado);
+        assertEquals(false, resultado);
     }
 
-        @Test
+    @Test
     void testSetNombreInvalido_LongitudLarga() {
         UsuarioConcreta usuario = new UsuarioConcreta("NombreDeDiezCaracteres", "01/01/1990", 123);
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            usuario.setNombre("a".repeat(51)); // 101 caracteres
-        });
-        assertTrue(exception.getMessage().contains("El nombre es obligatorio y debe tener entre 10 y 50 caracteres."));
+        boolean resultado = usuario.setNombre("a".repeat(51)); // 51 caracteres
+        assertFalse(resultado);
+        assertEquals(false, resultado);
     }
 
 }

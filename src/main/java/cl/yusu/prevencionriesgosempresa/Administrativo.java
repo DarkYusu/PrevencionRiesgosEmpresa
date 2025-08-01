@@ -28,27 +28,27 @@ public class Administrativo extends Usuario {
         return area;
     }
 
-    public void setArea(String area) {
+    public boolean setArea(String area) {
         if (area == null || area.trim().length() < 5 ||
                 area.trim().length() > 20) {
-            throw new IllegalArgumentException("El area es obligatoria y debe "
-                    + "tener entre 5 y 20 caracteres.");
+            return false;
+        } else {
+            this.area = area;
+            return true;
         }
-        this.area = area;
     }
 
     public String getExperienciaPrevia() {
         return experienciaPrevia;
     }
 
-    public void setExperienciaPrevia(String experienciaPrevia) {
-        if (experienciaPrevia == null) {
-            throw new IllegalArgumentException("La experiencia previa no puede ser nula.");
+    public boolean setExperienciaPrevia(String experienciaPrevia) {
+        if (experienciaPrevia == null || experienciaPrevia.trim().length() > 100) {
+            return false;
+        } else {
+            this.experienciaPrevia = experienciaPrevia;
+            return true;
         }
-        if (experienciaPrevia.length() > 100) {
-            throw new IllegalArgumentException("La experiencia previa no puede exceder los 100 caracteres.");
-        }
-        this.experienciaPrevia = experienciaPrevia;
     }
 
     @Override

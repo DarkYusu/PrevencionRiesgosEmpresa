@@ -37,11 +37,12 @@ public class Capacitacion {
         return identificador;
     }
 
-    public void setIdentificador(int identificador) {
+    public boolean setIdentificador(int identificador) {
         if (identificador > 0) {
             this.identificador = identificador;
+            return true;
         } else {
-            System.out.println("Error: El identificador debe ser un número positivo.");
+            return false;
         }
     }
 

@@ -30,6 +30,7 @@ public class VisitaEnTerrenoTest {
     void testSetComentariosValido() {
         VisitaEnTerreno visita = new VisitaEnTerreno();
         String comentario = "Este es un comentario válido.";
+        
         boolean result = visita.setComentarios(comentario);
         assertTrue(result);
         assertEquals(comentario, visita.getComentarios());
@@ -38,6 +39,7 @@ public class VisitaEnTerrenoTest {
     @Test
     void testSetComentariosNulo() {
         VisitaEnTerreno visita = new VisitaEnTerreno();
+        
         boolean result = visita.setComentarios(null);
         assertTrue(result); // Se permite nulo según la lógica
         assertNull(visita.getComentarios());
@@ -46,6 +48,7 @@ public class VisitaEnTerrenoTest {
     @Test
     void testSetComentariosExcedeLimiteMaximo() {
         VisitaEnTerreno visita = new VisitaEnTerreno();
+        
         String comentarioLargo = "a".repeat(101); // 101 caracteres
         boolean result = visita.setComentarios(comentarioLargo);
         assertFalse(result);

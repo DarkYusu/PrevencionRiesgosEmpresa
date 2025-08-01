@@ -4,7 +4,6 @@
  */
 package cl.yusu.prevencionriesgosempresa;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -84,75 +83,107 @@ public class Menu {
             nombre = scanner.nextLine();
 
         } while (nombre.length() < 10 || nombre.length() > 50);
-
+        if (nombre.length() < 10 || nombre.length() > 50) {
+            System.out.println("Error: el nombre debe tener entre 10 y 50 caracteres.");
+        }
         do {
             System.out.print("Fecha Nacimiento (DD/MM/AAAA): ");
             fechaNacimiento = scanner.nextLine();
+            if (!ValidadorFechaHora.isValidarFecha(fechaNacimiento)) {
+                System.out.println("Error: debe ingresar una fecha valida con formato DD/MM/AAAA.");
+            }
         } while (!ValidadorFechaHora.isValidarFecha(fechaNacimiento));
 
         do {
             System.out.print("RUN (sin puntos ni guion, < 99999999): ");
             while (!scanner.hasNextInt()) {
-                System.out.println("Debe ingresar un número válido.");
+                System.out.println("Error: debe ingresar un numero valido.");
                 scanner.next();
             }
             run = scanner.nextInt();
             scanner.nextLine();
+            if (run <= 0 || run >= 99999999) {
+                System.out.println("Error: el RUN debe ser mayor a 0 y menor a 99.999.999.");
+            }
         } while (run <= 0 || run >= 99999999);
 
         do {
             System.out.print("RUT Cliente (sin puntos ni guion): ");
             while (!scanner.hasNextInt()) {
-                System.out.println("Debe ingresar un número válido.");
+                System.out.println("Error: debe ingresar un numero valido.");
                 scanner.next();
             }
             rut = scanner.nextInt();
             scanner.nextLine();
+            if (rut <= 0) {
+                System.out.println("Error: el RUT debe ser mayor a 0.");
+            }
         } while (rut <= 0);
 
         do {
             System.out.print("Apellidos Cliente (5-30 caracteres): ");
             apellidos = scanner.nextLine();
+            if (apellidos.length() < 5 || apellidos.length() > 30) {
+                System.out.println("Error: los apellidos deben tener entre 5 y 30 caracteres.");
+            }
         } while (apellidos.length() < 5 || apellidos.length() > 30);
 
         do {
             System.out.print("Telefono Cliente (max 15 caracteres): ");
             telefono = scanner.nextLine();
+            if (telefono.length() == 0 || telefono.length() > 15) {
+                System.out.println("Error: el telefono no puede estar vacio ni superar los 15 caracteres.");
+            }
         } while (telefono.length() == 0 || telefono.length() > 15);
 
         do {
             System.out.print("AFP Cliente (4-100 caracteres): ");
             afp = scanner.nextLine();
+            if (afp.length() < 4 || afp.length() > 100) {
+                System.out.println("Error: la AFP debe tener entre 4 y 100 caracteres.");
+            }
         } while (afp.length() < 4 || afp.length() > 100);
 
         do {
             System.out.print("Sistema de Salud (1:Fonasa, 2:Isapre): ");
             while (!scanner.hasNextInt()) {
-                System.out.println("Debe ingresar 1 o 2.");
+                System.out.println("Error: debe ingresar 1 o 2.");
                 scanner.next();
             }
             sistemaSalud = scanner.nextInt();
             scanner.nextLine();
+            if (sistemaSalud != 1 && sistemaSalud != 2) {
+                System.out.println("Error: el sistema de salud debe ser 1 (Fonasa) o 2 (Isapre).");
+            }
         } while (sistemaSalud != 1 && sistemaSalud != 2);
 
         do {
             System.out.print("Direccion Cliente (max 100 caracteres): ");
             direccion = scanner.nextLine();
+            if (direccion.length() == 0 || direccion.length() > 100) {
+                System.out.println("Error: la direccion no puede estar vacia ni superar los 100 caracteres.");
+            }
         } while (direccion.length() == 0 || direccion.length() > 100);
 
         do {
             System.out.print("Comuna Cliente (max 50 caracteres): ");
             comuna = scanner.nextLine();
+            if (comuna.length() == 0 || comuna.length() > 50) {
+                System.out.println("Error: la comuna no puede estar vacia ni superar los 50 caracteres.");
+            }
         } while (comuna.length() == 0 || comuna.length() > 50);
 
         do {
             System.out.print("Edad Cliente (>=0 y <150): ");
             while (!scanner.hasNextInt()) {
-                System.out.println("Debe ingresar una edad válida.");
+                System.out.println("Error: debe ingresar una edad valida.");
                 scanner.next();
             }
             edad = scanner.nextInt();
             scanner.nextLine();
+            if (edad < 0 || edad >= 150) {
+                System.out.println("Error: la edad debe ser mayor o igual a 0 y menor a 150.");
+            }
         } while (edad < 0 || edad >= 150);
 
         Cliente cliente = new Cliente(nombre, fechaNacimiento, run, rut, apellidos, telefono, afp, sistemaSalud,
@@ -167,51 +198,55 @@ public class Menu {
         while (true) {
             System.out.print("Nombre (10-50 caracteres): ");
             String nombre = scanner.nextLine();
-            if (profesional.setNombre(nombre)) {
-                break;
+            if (!profesional.setNombre(nombre)) {
+                System.out.println("Error: el nombre debe tener entre 10 y 50 caracteres.");
             } else {
-                System.out.println("Entrada invalida");
+                break;
             }
         }
 
         while (true) {
             System.out.print("Fecha Nacimiento (DD/MM/AAAA): ");
             String fechaNacimiento = scanner.nextLine();
-            if (profesional.setFechaNacimiento(fechaNacimiento)) {
-                break;
+            if (!profesional.setFechaNacimiento(fechaNacimiento)) {
+                System.out.println("Error: debe ingresar una fecha valida con formato DD/MM/AAAA.");
             } else {
-                System.out.println("Entrada invalida");
+                break;
             }
         }
 
         while (true) {
             System.out.print("RUN (sin puntos ni guion, < 99.999.999): ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Error: debe ingresar un numero valido.");
+                scanner.next();
+            }
             int run = scanner.nextInt();
             scanner.nextLine();
-            if (profesional.setRun(run)) {
-                break;
+            if (!profesional.setRun(run)) {
+                System.out.println("Error: el RUN debe ser mayor a 0 y menor a 99.999.999.");
             } else {
-                System.out.println("Entrada invalida");
+                break;
             }
         }
 
         while (true) {
             System.out.print("Titulo (10-50 caracteres): ");
             String titulo = scanner.nextLine();
-            if (profesional.setTitulo(titulo)) {
-                break;
+            if (!profesional.setTitulo(titulo)) {
+                System.out.println("Error: el título debe tener entre 10 y 50 caracteres.");
             } else {
-                System.out.println("Entrada invalida");
+                break;
             }
         }
 
         while (true) {
             System.out.print("Fecha de Ingreso (DD/MM/AAAA): ");
             String fechaIngreso = scanner.nextLine();
-            if (profesional.setFechaIngreso(fechaIngreso)) {
-                break;
+            if (!profesional.setFechaIngreso(fechaIngreso)) {
+                System.out.println("Error: debe ingresar una fecha valida con formato DD/MM/AAAA.");
             } else {
-                System.out.println("Entrada invalida");
+                break;
             }
         }
         contenedor.almacenarProfesional(profesional);
@@ -224,31 +259,46 @@ public class Menu {
         do {
             System.out.print("Nombre (10-50 caracteres): ");
             nombre = scanner.nextLine();
+            if (nombre.length() < 10 || nombre.length() > 50) {
+                System.out.println("Error: el nombre debe tener entre 10 y 50 caracteres.");
+            }
         } while (nombre.length() < 10 || nombre.length() > 50);
 
         do {
             System.out.print("Fecha Nacimiento (DD/MM/AAAA): ");
             fechaNacimiento = scanner.nextLine();
+            if (!ValidadorFechaHora.isValidarFecha(fechaNacimiento)) {
+                System.out.println("Error: debe ingresar una fecha valida con formato DD/MM/AAAA.");
+            }
         } while (!ValidadorFechaHora.isValidarFecha(fechaNacimiento));
 
         do {
             System.out.print("RUN (sin puntos ni guion, < 99999999): ");
             while (!scanner.hasNextInt()) {
-                System.out.println("Debe ingresar un número válido.");
+                System.out.println("Error: debe ingresar un numero valido.");
                 scanner.next();
             }
             run = scanner.nextInt();
             scanner.nextLine();
+            if (run <= 0 || run >= 99999999) {
+                System.out.println("Error: el RUN debe ser mayor a 0 y menor a 99.999.999.");
+            }
         } while (run <= 0 || run >= 99999999);
 
         do {
             System.out.print("Area (5-20 caracteres): ");
             area = scanner.nextLine();
+            if (area.length() < 5 || area.length() > 20) {
+                System.out.println("Error: el area debe tener entre 5 y 20 caracteres.");
+            }
         } while (area.length() < 5 || area.length() > 20);
 
         do {
             System.out.print("Experiencia Previa (max 100 caracteres): ");
             experienciaPrevia = scanner.nextLine();
+            if (experienciaPrevia.length() == 0 || experienciaPrevia.length() > 100) {
+                System.out.println("Error: la experiencia previa no puede estar vacia ni superar los 100 caracteres.");
+            }
         } while (experienciaPrevia.length() == 0 || experienciaPrevia.length() > 100);
 
         Administrativo administrativo = new Administrativo(nombre,
@@ -264,7 +314,7 @@ public class Menu {
             int run = Integer.parseInt(input);
             contenedor.eliminarUsuario(run);
         } else {
-            System.out.println("Error: debe ingresar un número válido para el RUN.");
+            System.out.println("Error: debe ingresar un numero valido para el RUN.");
         }
     }
 
@@ -281,36 +331,86 @@ public class Menu {
 
     // --- Métodos para Gestión de Capacitaciones ---
     private void almacenarCapacitacion() {
-        try {
+        int id, rutCliente, duracion, asistentes;
+        String dia, hora, lugar;
+
+        do {
             System.out.print("Identificador Capacitacion (positivo): ");
-            int id = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
+            while (!scanner.hasNextInt()) {
+                System.out.println("Error: debe ingresar un número positivo.");
+                scanner.next();
+            }
+            id = scanner.nextInt();
+            scanner.nextLine();
+            if (id <= 0) {
+                System.out.println("Error: el identificador debe ser mayor a 0.");
+            }
+        } while (id <= 0);
+
+        do {
             System.out.print("RUT Cliente (sin puntos ni guion): ");
-            int rutCliente = scanner.nextInt();
+            while (!scanner.hasNextInt()) {
+                System.out.println("Error: debe ingresar un número positivo.");
+                scanner.next();
+            }
+            rutCliente = scanner.nextInt();
             scanner.nextLine();
+            if (rutCliente <= 0) {
+                System.out.println("Error: el RUT debe ser mayor a 0.");
+            }
+        } while (rutCliente <= 0);
+
+        do {
             System.out.print("Dia (Lunes a Domingo): ");
-            String dia = scanner.nextLine();
-            System.out.print("Hora (HH:MM): ");
-            String hora = scanner.nextLine();
+            dia = scanner.nextLine().toLowerCase();
+            if (!dia.equals("lunes") && !dia.equals("martes") && !dia.equals("miercoles") &&
+                    !dia.equals("jueves") && !dia.equals("viernes") && !dia.equals("sabado") &&
+                    !dia.equals("domingo")) {
+                System.out.println("Error: el día debe ser un valor válido entre 'lunes' y 'domingo'.");
+            }
+        } while (!dia.equals("lunes") && !dia.equals("martes") && !dia.equals("miercoles") &&
+                !dia.equals("jueves") && !dia.equals("viernes") && !dia.equals("sabado") &&
+                !dia.equals("domingo"));
+
+        System.out.print("Hora (HH:MM): ");
+        hora = scanner.nextLine();
+
+        do {
             System.out.print("Lugar (10-50 caracteres): ");
-            String lugar = scanner.nextLine();
-            System.out.print("Duracion (max 70 caracteres): ");
-            int duracion = scanner.nextInt();
+            lugar = scanner.nextLine();
+            if (lugar.length() < 10 || lugar.length() > 50) {
+                System.out.println("Error: el lugar debe tener entre 10 y 50 caracteres.");
+            }
+        } while (lugar.length() < 10 || lugar.length() > 50);
+
+        do {
+            System.out.print("Duracion (max 70): ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Error: debe ingresar una duración válida (1-70).");
+                scanner.next();
+            }
+            duracion = scanner.nextInt();
+            scanner.nextLine();
+            if (duracion <= 0 || duracion > 70) {
+                System.out.println("Error: la duración debe ser mayor a 0 y menor o igual a 70.");
+            }
+        } while (duracion <= 0 || duracion > 70);
+
+        do {
             System.out.print("Cantidad de asistentes (1-999): ");
-            int asistentes = scanner.nextInt();
+            while (!scanner.hasNextInt()) {
+                System.out.println("Error: debe ingresar una cantidad válida (1-999).");
+                scanner.next();
+            }
+            asistentes = scanner.nextInt();
             scanner.nextLine();
+            if (asistentes < 1 || asistentes > 999) {
+                System.out.println("Error: la cantidad de asistentes debe ser entre 1 y 999.");
+            }
+        } while (asistentes < 1 || asistentes > 999);
 
-            Capacitacion capacitacion = new Capacitacion(id, rutCliente,
-                    dia, hora, lugar, duracion, asistentes);
-            contenedor.almacenarCapacitacion(capacitacion);
-
-        } catch (InputMismatchException e) {
-            System.out.println("Error: tipo de dato incorrecto. Asegúrese de "
-                    + "ingresar números para identificador, RUT y asistentes.");
-            scanner.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error de validacion: " + e.getMessage());
-        }
+        Capacitacion capacitacion = new Capacitacion(id, rutCliente, dia, hora, lugar, duracion, asistentes);
+        contenedor.almacenarCapacitacion(capacitacion);
     }
 
     private void listarCapacitaciones() {
