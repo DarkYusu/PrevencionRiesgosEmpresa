@@ -36,7 +36,7 @@ La aplicación desarrollada en Java permite:
 - Se incluyó validación de entradas para evitar errores de formato en datos importantes como fechas y horas.
 
 ## Desarrolladores
-- Antonio Badilla
+- Antonio Badilla Espinoza
 - Nicole Diaz Caamaño
 - Ricardo Ruiz Palacios
-- Sebastian ...
+- Sebastian Landeros Vergara
