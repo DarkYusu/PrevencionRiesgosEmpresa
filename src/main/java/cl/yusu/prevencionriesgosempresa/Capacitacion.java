@@ -5,7 +5,6 @@
 package cl.yusu.prevencionriesgosempresa;
 
 /**
- *
  * @author anton
  */
 public class Capacitacion {

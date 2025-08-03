@@ -64,5 +64,4 @@ public class CapacitacionTest {
         assertFalse(resultado);
         assertEquals(1, capacitacion.getIdentificador());
     }
-
 }

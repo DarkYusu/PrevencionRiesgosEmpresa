@@ -416,5 +416,4 @@ public class Menu {
     private void listarCapacitaciones() {
         contenedor.listarCapacitaciones();
     }
-
 }

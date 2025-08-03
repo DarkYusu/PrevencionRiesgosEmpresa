@@ -53,5 +53,4 @@ public class VisitaEnTerrenoTest {
         boolean result = visita.setComentarios(comentarioLargo);
         assertFalse(result);
     }
-
 }

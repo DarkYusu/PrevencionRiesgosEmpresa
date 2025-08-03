@@ -79,5 +79,4 @@ public class AdministrativoTest {
                 assertFalse(resultado);
                 assertEquals("Exp.", admin.getExperienciaPrevia());
         }
-
 }

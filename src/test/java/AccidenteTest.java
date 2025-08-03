@@ -6,7 +6,6 @@
 import cl.yusu.prevencionriesgosempresa.Accidente;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 /**
  *
  * @author anton

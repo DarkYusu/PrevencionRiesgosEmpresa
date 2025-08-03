@@ -51,5 +51,4 @@ public class ContenedorTest {
         contenedor.almacenarProfesional(new Profesional("Profesional Test List", "02/02/1985", 22222222, "Ingenierodiez", "01/01/2010"));
         assertDoesNotThrow(() -> contenedor.listarUsuarios(), "Listar usuarios con datos no debe lanzar excepción.");
     }
-
 }

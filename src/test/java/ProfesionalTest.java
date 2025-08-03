@@ -42,5 +42,4 @@ public class ProfesionalTest {
                 assertFalse(resultado);
                 assertEquals("TitulodeDiezCaracteres", profesional.getTitulo());
         }
-
 }

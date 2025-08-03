@@ -61,5 +61,4 @@ public class ClienteTest {
         assertFalse(resultado);
         assertEquals(11111111, cliente.getRut());
     }
-
 }

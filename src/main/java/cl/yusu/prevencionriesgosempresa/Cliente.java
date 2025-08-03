@@ -143,7 +143,7 @@ public class Cliente extends Usuario {
         return "Cliente{"
                 + "rut=" + rut
                 + ", apellidos='" + apellidos
-              + super.toString();
+                + super.toString();
     }
 
     public String obtenerNombre() {

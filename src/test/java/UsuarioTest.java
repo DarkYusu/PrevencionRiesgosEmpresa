@@ -45,5 +45,4 @@ public class UsuarioTest {
         assertFalse(resultado);
         assertEquals(false, resultado);
     }
-
 }

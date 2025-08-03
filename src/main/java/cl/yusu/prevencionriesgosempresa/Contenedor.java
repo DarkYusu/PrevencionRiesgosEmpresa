@@ -6,7 +6,6 @@ package cl.yusu.prevencionriesgosempresa;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author anton
